@@ -13,7 +13,7 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 
 
-ALLOWED_HOSTS = ['10.0.0.214']
+ALLOWED_HOSTS = ['10.0.0.214', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
