@@ -206,5 +206,7 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
+# Add-ons
 .idea/
 node_modules/
+staticfiles/
