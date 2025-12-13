@@ -7,13 +7,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False") == "True"
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
 if DEBUG:
     # Dev environment only
     CORS_ALLOW_ALL_ORIGINS = True
 
-
-ALLOWED_HOSTS = ['10.0.0.214', '127.0.0.1']
 
 # Application definition
 INSTALLED_APPS = [
