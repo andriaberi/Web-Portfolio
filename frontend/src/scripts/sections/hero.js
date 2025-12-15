@@ -4,7 +4,7 @@ function Hero() {
             <section className="home"
                  id="home"
                  style={{
-                     backgroundColor: "var(--background-light-5)",
+                     // backgroundColor: "var(--background-light-5)",
                      height: "100dvh",
                  }}>
             </section>
