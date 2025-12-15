@@ -274,7 +274,6 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: color-mix(in srgb, var(--background-light-5) 80%, transparent);
-  position: relative;
   margin: var(--margin-md) 0;
   border-radius: var(--border-radius-lg);
   border: var(--border-size-md) solid var(--background-light-5);
@@ -352,12 +351,6 @@ body {
   font-family: "Sora-Regular", sans-serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0;
-  flex-wrap: nowrap;
 }
 
 ul, li {

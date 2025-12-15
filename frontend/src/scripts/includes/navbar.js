@@ -11,18 +11,21 @@ function Navbar() {
         { label: "Contact", icon: "bi-telephone" },
     ];
 
-    const [activeIndex, setActiveIndex] = useState(0); // clicked item
-    const [hoverIndex, setHoverIndex] = useState(null); // hovered item
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [hoverIndex, setHoverIndex] = useState(null);
+    const [indicatorStyle, setIndicatorStyle] = useState({});
 
     const navRef = useRef(null);
-    const [indicatorStyle, setIndicatorStyle] = useState({});
+
+    const isProgrammaticScroll = useRef(false);
+    const scrollTargetIndex = useRef(null);
 
     const slugify = (label) =>
         label.trim().toLowerCase().replace(/\s+/g, "-");
 
-    // Update indicator position
+    // INDICATOR POSITION (hover > active)
     useEffect(() => {
-        const index = hoverIndex !== null ? hoverIndex : activeIndex;
+        const index = hoverIndex ?? activeIndex;
         const nav = navRef.current;
         if (!nav) return;
 
@@ -36,8 +39,73 @@ function Navbar() {
         });
     }, [hoverIndex, activeIndex]);
 
+    // SCROLL → ACTIVE SECTION (LOCKED)
+    useEffect(() => {
+        const sections = navItems
+            .map((item) => document.getElementById(slugify(item.label)))
+            .filter(Boolean);
+
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const visible = entries
+                    .filter((e) => e.isIntersecting)
+                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+                if (!visible) return;
+
+                const index = navItems.findIndex(
+                    (item) => slugify(item.label) === visible.target.id
+                );
+
+                if (index === -1) return;
+
+                if (isProgrammaticScroll.current) {
+                    if (index !== scrollTargetIndex.current) return;
+
+                    // Target reached → unlock
+                    isProgrammaticScroll.current = false;
+                    scrollTargetIndex.current = null;
+                }
+
+                setActiveIndex(index);
+                window.history.replaceState(null, "", `#${slugify(navItems[index].label)}`);
+            },
+            {
+                threshold: 0.6,
+            }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
+    }, []);
+
+    function smoothScrollTo(targetY, duration = 1000) {
+        const startY = window.scrollY;
+        const diff = targetY - startY;
+        const startTime = performance.now();
+
+        function step(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+
+            // easeInOutCubic easing
+            const eased =
+                progress < 0.5
+                    ? 4 * progress * progress * progress
+                    : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+
+            window.scrollTo(0, startY + diff * eased);
+
+            if (progress < 1) requestAnimationFrame(step);
+        }
+
+        requestAnimationFrame(step);
+    }
+
     return (
-        <nav className="navbar" id="navbar" aria-label="Primary navigation">
+        <nav className="navbar" aria-label="Primary navigation">
             <ul className="nav-items" ref={navRef}>
                 {navItems.map((item, index) => {
                     const slug = slugify(item.label);
@@ -45,25 +113,38 @@ function Navbar() {
                     return (
                         <li
                             key={slug}
-                            className={`nav-item`}
-                            onMouseEnter={() => setHoverIndex(index)}
+                            className="nav-item"
+                            onMouseEnter={() => {
+                                if (!isProgrammaticScroll.current) {
+                                    setHoverIndex(index);
+                                }
+                            }}
                             onMouseLeave={() => setHoverIndex(null)}
-                            onClick={() => setActiveIndex(index)}
+                            onClick={() => {
+                                isProgrammaticScroll.current = true;
+                                scrollTargetIndex.current = index;
+                                setActiveIndex(index);
+                                setHoverIndex(null);
+
+                                const target = document.getElementById(slug);
+                                if (/Mobi|Android/i.test(navigator.userAgent)) {
+                                    document.getElementById(slug)?.scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                    smoothScrollTo(target.offsetTop, 1400);
+                                }
+
+                            }}
                         >
-                            <a href={`#${slug}`} className="nav-link">
-                                <i className={`bi ${item.icon}`} aria-hidden="true"></i>
+                            <a className="nav-link">
+                                <i className={`bi ${item.icon}`} />
                             </a>
                             <span className="nav-label">{item.label}</span>
                         </li>
                     );
                 })}
             </ul>
-            <span
-                className="nav-indicator"
-                style={{
-                    ...indicatorStyle,
-                }}
-            ></span>
+
+            <span className="nav-indicator" style={indicatorStyle} />
         </nav>
     );
 }

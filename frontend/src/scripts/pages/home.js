@@ -1,9 +1,23 @@
 import Navbar from '../includes/navbar'
+import Hero from '../sections/hero'
+import About from '../sections/about'
+import Skills from '../sections/skills'
+import Experience from '../sections/experience'
+import Projects from '../sections/projects'
+import Achievements from '../sections/achievements'
+import Contact from '../sections/contact'
 
 function Home() {
     return (
         <>
             <Navbar />
+            <Hero />
+            <About />
+            <Skills />
+            <Experience />
+            <Projects />
+            <Achievements />
+            <Contact />
         </>
     );
 }

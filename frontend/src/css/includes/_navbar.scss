@@ -1,7 +1,6 @@
 .navbar {
     @include center-fixed(true, false);
     background-color: color-mix(in srgb, var(--background-light-5) 80%, transparent);
-    position: relative;
     margin: var(--margin-md) 0;
     border-radius: var(--border-radius-lg);
     border: var(--border-size-md) solid var(--background-light-5);
