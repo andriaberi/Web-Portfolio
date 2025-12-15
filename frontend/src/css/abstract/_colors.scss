@@ -1,0 +1,92 @@
+@import 'mixins';
+
+// Base colors for each theme
+$themes: (
+    "light": (
+        "primary": #9BB6E0,
+        "secondary": #254C89,
+        "background": #caddf8,
+        "text": #030508,
+        "accent": #3B75D1
+    ),
+    "dark": (
+        "primary": #9BB6E0,
+        "secondary": #254C89,
+        "background": #030508,
+        "text": #E7EDF6,
+        "accent": #3B75D1
+    ),
+    "papaya": ( 
+        "primary": #ff7235,     
+        "secondary": #FF8C42,  
+        "background": #0A0A0A,  
+        "text": #F2F2F2,         
+        "accent": #FFB399   
+    )
+);
+
+// Flat colors (same across themes)
+$flat-colors: (
+    "info": #2D9CDB,
+    "success": #27AE60,
+    "warning": #F2C94C,
+    "danger": #EB5757
+);
+
+// Utility functions
+@function rgb-int($color) {
+    $r: round(red($color));
+    $g: round(green($color));
+    $b: round(blue($color));
+
+    @return "rgb(#{$r}, #{$g}, #{$b})";
+}
+
+@function shade-name($name, $type, $amount) {
+    @return "#{$name}-#{$type}-#{$amount}";
+}
+
+@function generate-shades($color, $name) {
+    $result: ();
+
+    // Light shades
+    @for $i from 1 through 5 {
+        $percent: $i * 5;
+        $key: shade-name($name, "light", $percent);
+        $value: rgb-int(lighten($color, $percent));
+        $result: map-merge($result, ($key: $value));
+    }
+
+    // Dark shades
+    @for $i from 1 through 5 {
+        $percent: $i * 5;
+        $key: shade-name($name, "dark", $percent);
+        $value: rgb-int(darken($color, $percent));
+        $result: map-merge($result, ($key: $value));
+    }
+
+    @return $result;
+}
+
+// Generate CSS variables per theme
+@each $theme-name, $theme-map in $themes {
+    .theme-#{$theme-name} {
+        $all-colors: ();
+
+        // Add shaded base colors
+        @each $name, $color in $theme-map {
+            $all-colors: map-merge($all-colors, ($name: $color));
+            $all-colors: map-merge($all-colors, generate-shades($color, $name));
+        }
+
+        // Add flat colors
+        @each $name, $color in $flat-colors {
+            $all-colors: map-merge($all-colors, ($name: $color));
+        }
+
+        // Export CSS variables
+        @each $key, $value in $all-colors {
+            --#{$key}: #{$value};
+        }
+    }
+}
