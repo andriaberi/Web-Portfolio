@@ -9,10 +9,12 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG", "False") == "True"
 ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS").split(",")
 
+if not SECRET_KEY:
+    raise RuntimeError("SECRET_KEY is not set")
+
 if DEBUG:
     # Dev environment only
     CORS_ALLOW_ALL_ORIGINS = True
-
 
 # Application definition
 INSTALLED_APPS = [
