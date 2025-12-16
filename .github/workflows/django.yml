@@ -17,7 +17,7 @@ jobs:
 
     env:
       DEBUG: "True"
-      SECRET_KEY: "dummy-secret-key-for-ci"
+      SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
       ALLOWED_HOSTS: "127.0.0.1,localhost"
 
     steps:
