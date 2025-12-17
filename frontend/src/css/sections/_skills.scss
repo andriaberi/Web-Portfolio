@@ -1,10 +1,80 @@
-.skills,
-.experience,
-.projects,
-.achievements,
-.contact {
-    position: relative;
-    z-index: 2;
-    background-color: white !important;
-    min-height: 100vh;
+.skills {
+    padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+    @include flex(column, center, center);
+
+    .skills-header {
+        margin: 0;
+        margin-bottom: var(--margin-lg);
+    }
+
+    .core-expertise {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: var(--gap-md);
+
+        .expertise-card {
+            background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+            border: var(--border-size-md) solid var(--background-light-10);
+            border-radius: var(--border-radius-xl);
+            width: 250px;
+            height: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition-slow);
+            padding: var(--padding-md) var(--padding-md);
+
+            .icon {
+                background-color: color-mix(in srgb, var(--primary) 50%, transparent);
+                color: white;
+                @include size(3rem, 3rem);
+                border-radius: var(--border-radius-xl);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: var(--font-size-lg);
+                transition: var(--transition-slow);
+            }
+
+            .content {
+                margin-top: var(--margin-lg);
+
+                h3 {
+                    margin: 0;
+                }
+
+                p {
+                    margin: var(--margin-xs);
+                    opacity: 0.5;
+                }
+            }
+
+            &:hover {
+                border-color: var(--primary);
+                //scale: 1.05;
+
+                .icon {
+                        background-color: var(--primary);
+                }
+            }
+        }
+    }
+
+    @include respond-to('sm') {
+        .core-expertise {
+            position: relative;
+
+            .expertise-card {
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }

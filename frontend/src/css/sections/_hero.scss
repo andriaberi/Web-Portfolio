@@ -9,7 +9,7 @@
 .hero {
     @include fixed(0, 0, 0, 0);
     @include flex(row, center, center);
-    background-color: var(--background-dark-5);
+    background-color: var(--background-dark-2);
 
     .hero-content {
         width: 100%;

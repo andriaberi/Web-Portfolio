@@ -56,60 +56,60 @@
 
 .theme-light {
   --primary: #9BB6E0;
-  --primary-light-5: rgb(174, 196, 230);
+  --primary-light-2: rgb(163, 188, 226);
+  --primary-light-4: rgb(171, 193, 229);
+  --primary-light-6: rgb(178, 199, 231);
+  --primary-light-8: rgb(186, 205, 234);
   --primary-light-10: rgb(194, 210, 236);
-  --primary-light-15: rgb(213, 225, 242);
-  --primary-light-20: rgb(233, 239, 248);
-  --primary-light-25: rgb(252, 253, 254);
-  --primary-dark-5: rgb(136, 168, 218);
+  --primary-dark-2: rgb(147, 176, 222);
+  --primary-dark-4: rgb(139, 171, 219);
+  --primary-dark-6: rgb(132, 165, 217);
+  --primary-dark-8: rgb(124, 159, 214);
   --primary-dark-10: rgb(116, 154, 212);
-  --primary-dark-15: rgb(97, 139, 206);
-  --primary-dark-20: rgb(77, 125, 200);
-  --primary-dark-25: rgb(60, 111, 192);
   --secondary: #254C89;
-  --secondary-light-5: rgb(42, 87, 157);
+  --secondary-light-2: rgb(39, 80, 145);
+  --secondary-light-4: rgb(41, 85, 153);
+  --secondary-light-6: rgb(44, 89, 161);
+  --secondary-light-8: rgb(46, 94, 169);
   --secondary-light-10: rgb(48, 98, 177);
-  --secondary-light-15: rgb(53, 109, 197);
-  --secondary-light-20: rgb(71, 123, 205);
-  --secondary-light-25: rgb(91, 138, 211);
-  --secondary-dark-5: rgb(32, 65, 117);
+  --secondary-dark-2: rgb(35, 72, 129);
+  --secondary-dark-4: rgb(33, 67, 121);
+  --secondary-dark-6: rgb(30, 63, 113);
+  --secondary-dark-8: rgb(28, 58, 105);
   --secondary-dark-10: rgb(26, 54, 97);
-  --secondary-dark-15: rgb(21, 43, 77);
-  --secondary-dark-20: rgb(15, 31, 57);
-  --secondary-dark-25: rgb(10, 20, 37);
   --background: #caddf8;
-  --background-light-5: rgb(225, 235, 251);
+  --background-light-2: rgb(211, 227, 249);
+  --background-light-4: rgb(220, 233, 250);
+  --background-light-6: rgb(229, 238, 252);
+  --background-light-8: rgb(238, 244, 253);
   --background-light-10: rgb(247, 250, 254);
-  --background-light-15: rgb(255, 255, 255);
-  --background-light-20: rgb(255, 255, 255);
-  --background-light-25: rgb(255, 255, 255);
-  --background-dark-5: rgb(179, 207, 245);
+  --background-dark-2: rgb(193, 215, 247);
+  --background-dark-4: rgb(184, 209, 246);
+  --background-dark-6: rgb(175, 204, 244);
+  --background-dark-8: rgb(166, 198, 243);
   --background-dark-10: rgb(157, 192, 242);
-  --background-dark-15: rgb(134, 178, 239);
-  --background-dark-20: rgb(112, 163, 236);
-  --background-dark-25: rgb(89, 149, 233);
   --text: #030508;
-  --text-light-5: rgb(10, 17, 27);
+  --text-light-2: rgb(6, 10, 15);
+  --text-light-4: rgb(9, 14, 23);
+  --text-light-6: rgb(11, 19, 30);
+  --text-light-8: rgb(14, 24, 38);
   --text-light-10: rgb(17, 28, 45);
-  --text-light-15: rgb(24, 40, 64);
-  --text-light-20: rgb(31, 51, 82);
-  --text-light-25: rgb(38, 63, 101);
-  --text-dark-5: rgb(0, 0, 0);
+  --text-dark-2: rgb(0, 0, 1);
+  --text-dark-4: rgb(0, 0, 0);
+  --text-dark-6: rgb(0, 0, 0);
+  --text-dark-8: rgb(0, 0, 0);
   --text-dark-10: rgb(0, 0, 0);
-  --text-dark-15: rgb(0, 0, 0);
-  --text-dark-20: rgb(0, 0, 0);
-  --text-dark-25: rgb(0, 0, 0);
   --accent: #3B75D1;
-  --accent-light-5: rgb(80, 132, 214);
+  --accent-light-2: rgb(67, 123, 211);
+  --accent-light-4: rgb(76, 129, 213);
+  --accent-light-6: rgb(84, 134, 215);
+  --accent-light-8: rgb(92, 140, 217);
   --accent-light-10: rgb(100, 146, 219);
-  --accent-light-15: rgb(121, 161, 224);
-  --accent-light-20: rgb(142, 175, 228);
-  --accent-light-25: rgb(162, 190, 233);
-  --accent-dark-5: rgb(46, 104, 196);
+  --accent-dark-2: rgb(51, 111, 207);
+  --accent-dark-4: rgb(47, 106, 201);
+  --accent-dark-6: rgb(45, 102, 192);
+  --accent-dark-8: rgb(43, 98, 184);
   --accent-dark-10: rgb(41, 93, 176);
-  --accent-dark-15: rgb(36, 82, 155);
-  --accent-dark-20: rgb(32, 71, 134);
-  --accent-dark-25: rgb(27, 60, 114);
   --info: #2D9CDB;
   --success: #27AE60;
   --warning: #F2C94C;
@@ -118,60 +118,60 @@
 
 .theme-dark {
   --primary: #9BB6E0;
-  --primary-light-5: rgb(174, 196, 230);
+  --primary-light-2: rgb(163, 188, 226);
+  --primary-light-4: rgb(171, 193, 229);
+  --primary-light-6: rgb(178, 199, 231);
+  --primary-light-8: rgb(186, 205, 234);
   --primary-light-10: rgb(194, 210, 236);
-  --primary-light-15: rgb(213, 225, 242);
-  --primary-light-20: rgb(233, 239, 248);
-  --primary-light-25: rgb(252, 253, 254);
-  --primary-dark-5: rgb(136, 168, 218);
+  --primary-dark-2: rgb(147, 176, 222);
+  --primary-dark-4: rgb(139, 171, 219);
+  --primary-dark-6: rgb(132, 165, 217);
+  --primary-dark-8: rgb(124, 159, 214);
   --primary-dark-10: rgb(116, 154, 212);
-  --primary-dark-15: rgb(97, 139, 206);
-  --primary-dark-20: rgb(77, 125, 200);
-  --primary-dark-25: rgb(60, 111, 192);
   --secondary: #254C89;
-  --secondary-light-5: rgb(42, 87, 157);
+  --secondary-light-2: rgb(39, 80, 145);
+  --secondary-light-4: rgb(41, 85, 153);
+  --secondary-light-6: rgb(44, 89, 161);
+  --secondary-light-8: rgb(46, 94, 169);
   --secondary-light-10: rgb(48, 98, 177);
-  --secondary-light-15: rgb(53, 109, 197);
-  --secondary-light-20: rgb(71, 123, 205);
-  --secondary-light-25: rgb(91, 138, 211);
-  --secondary-dark-5: rgb(32, 65, 117);
+  --secondary-dark-2: rgb(35, 72, 129);
+  --secondary-dark-4: rgb(33, 67, 121);
+  --secondary-dark-6: rgb(30, 63, 113);
+  --secondary-dark-8: rgb(28, 58, 105);
   --secondary-dark-10: rgb(26, 54, 97);
-  --secondary-dark-15: rgb(21, 43, 77);
-  --secondary-dark-20: rgb(15, 31, 57);
-  --secondary-dark-25: rgb(10, 20, 37);
   --background: #030508;
-  --background-light-5: rgb(10, 17, 27);
+  --background-light-2: rgb(6, 10, 15);
+  --background-light-4: rgb(9, 14, 23);
+  --background-light-6: rgb(11, 19, 30);
+  --background-light-8: rgb(14, 24, 38);
   --background-light-10: rgb(17, 28, 45);
-  --background-light-15: rgb(24, 40, 64);
-  --background-light-20: rgb(31, 51, 82);
-  --background-light-25: rgb(38, 63, 101);
-  --background-dark-5: rgb(0, 0, 0);
+  --background-dark-2: rgb(0, 0, 1);
+  --background-dark-4: rgb(0, 0, 0);
+  --background-dark-6: rgb(0, 0, 0);
+  --background-dark-8: rgb(0, 0, 0);
   --background-dark-10: rgb(0, 0, 0);
-  --background-dark-15: rgb(0, 0, 0);
-  --background-dark-20: rgb(0, 0, 0);
-  --background-dark-25: rgb(0, 0, 0);
   --text: #E7EDF6;
-  --text-light-5: rgb(250, 251, 253);
+  --text-light-2: rgb(238, 243, 249);
+  --text-light-4: rgb(246, 248, 252);
+  --text-light-6: rgb(253, 254, 254);
+  --text-light-8: rgb(255, 255, 255);
   --text-light-10: rgb(255, 255, 255);
-  --text-light-15: rgb(255, 255, 255);
-  --text-light-20: rgb(255, 255, 255);
-  --text-light-25: rgb(255, 255, 255);
-  --text-dark-5: rgb(212, 223, 239);
+  --text-dark-2: rgb(224, 231, 243);
+  --text-dark-4: rgb(216, 226, 240);
+  --text-dark-6: rgb(209, 220, 238);
+  --text-dark-8: rgb(201, 215, 235);
   --text-dark-10: rgb(194, 209, 232);
-  --text-dark-15: rgb(175, 195, 225);
-  --text-dark-20: rgb(157, 181, 218);
-  --text-dark-25: rgb(138, 167, 211);
   --accent: #3B75D1;
-  --accent-light-5: rgb(80, 132, 214);
+  --accent-light-2: rgb(67, 123, 211);
+  --accent-light-4: rgb(76, 129, 213);
+  --accent-light-6: rgb(84, 134, 215);
+  --accent-light-8: rgb(92, 140, 217);
   --accent-light-10: rgb(100, 146, 219);
-  --accent-light-15: rgb(121, 161, 224);
-  --accent-light-20: rgb(142, 175, 228);
-  --accent-light-25: rgb(162, 190, 233);
-  --accent-dark-5: rgb(46, 104, 196);
+  --accent-dark-2: rgb(51, 111, 207);
+  --accent-dark-4: rgb(47, 106, 201);
+  --accent-dark-6: rgb(45, 102, 192);
+  --accent-dark-8: rgb(43, 98, 184);
   --accent-dark-10: rgb(41, 93, 176);
-  --accent-dark-15: rgb(36, 82, 155);
-  --accent-dark-20: rgb(32, 71, 134);
-  --accent-dark-25: rgb(27, 60, 114);
   --info: #2D9CDB;
   --success: #27AE60;
   --warning: #F2C94C;
@@ -180,60 +180,60 @@
 
 .theme-papaya {
   --primary: #ff7235;
-  --primary-light-5: rgb(255, 132, 79);
+  --primary-light-2: rgb(255, 121, 63);
+  --primary-light-4: rgb(255, 128, 73);
+  --primary-light-6: rgb(255, 135, 84);
+  --primary-light-8: rgb(255, 142, 94);
   --primary-light-10: rgb(255, 150, 104);
-  --primary-light-15: rgb(255, 167, 130);
-  --primary-light-20: rgb(255, 185, 155);
-  --primary-light-25: rgb(255, 203, 180);
-  --primary-dark-5: rgb(255, 96, 28);
+  --primary-dark-2: rgb(255, 107, 43);
+  --primary-dark-4: rgb(255, 100, 33);
+  --primary-dark-6: rgb(255, 93, 22);
+  --primary-dark-8: rgb(255, 86, 12);
   --primary-dark-10: rgb(255, 78, 2);
-  --primary-dark-15: rgb(232, 70, 0);
-  --primary-dark-20: rgb(206, 62, 0);
-  --primary-dark-25: rgb(180, 55, 0);
   --secondary: #FF8C42;
-  --secondary-light-5: rgb(255, 156, 91);
+  --secondary-light-2: rgb(255, 146, 76);
+  --secondary-light-4: rgb(255, 152, 86);
+  --secondary-light-6: rgb(255, 159, 97);
+  --secondary-light-8: rgb(255, 165, 107);
   --secondary-light-10: rgb(255, 171, 117);
-  --secondary-light-15: rgb(255, 187, 143);
-  --secondary-light-20: rgb(255, 202, 168);
-  --secondary-light-25: rgb(255, 218, 194);
-  --secondary-dark-5: rgb(255, 124, 40);
+  --secondary-dark-2: rgb(255, 134, 56);
+  --secondary-dark-4: rgb(255, 128, 46);
+  --secondary-dark-6: rgb(255, 121, 35);
+  --secondary-dark-8: rgb(255, 115, 25);
   --secondary-dark-10: rgb(255, 109, 15);
-  --secondary-dark-15: rgb(244, 96, 0);
-  --secondary-dark-20: rgb(219, 86, 0);
-  --secondary-dark-25: rgb(194, 76, 0);
-  --background: #131313;
-  --background-light-5: rgb(32, 32, 32);
-  --background-light-10: rgb(45, 45, 45);
-  --background-light-15: rgb(57, 57, 57);
-  --background-light-20: rgb(70, 70, 70);
-  --background-light-25: rgb(83, 83, 83);
-  --background-dark-5: rgb(6, 6, 6);
+  --background: #101010;
+  --background-light-2: rgb(21, 21, 21);
+  --background-light-4: rgb(26, 26, 26);
+  --background-light-6: rgb(31, 31, 31);
+  --background-light-8: rgb(36, 36, 36);
+  --background-light-10: rgb(41, 41, 41);
+  --background-dark-2: rgb(11, 11, 11);
+  --background-dark-4: rgb(6, 6, 6);
+  --background-dark-6: rgb(1, 1, 1);
+  --background-dark-8: rgb(0, 0, 0);
   --background-dark-10: rgb(0, 0, 0);
-  --background-dark-15: rgb(0, 0, 0);
-  --background-dark-20: rgb(0, 0, 0);
-  --background-dark-25: rgb(0, 0, 0);
   --text: #F2F2F2;
-  --text-light-5: rgb(255, 255, 255);
+  --text-light-2: rgb(247, 247, 247);
+  --text-light-4: rgb(252, 252, 252);
+  --text-light-6: rgb(255, 255, 255);
+  --text-light-8: rgb(255, 255, 255);
   --text-light-10: rgb(255, 255, 255);
-  --text-light-15: rgb(255, 255, 255);
-  --text-light-20: rgb(255, 255, 255);
-  --text-light-25: rgb(255, 255, 255);
-  --text-dark-5: rgb(229, 229, 229);
+  --text-dark-2: rgb(237, 237, 237);
+  --text-dark-4: rgb(232, 232, 232);
+  --text-dark-6: rgb(227, 227, 227);
+  --text-dark-8: rgb(222, 222, 222);
   --text-dark-10: rgb(216, 216, 216);
-  --text-dark-15: rgb(204, 204, 204);
-  --text-dark-20: rgb(191, 191, 191);
-  --text-dark-25: rgb(178, 178, 178);
   --accent: #FFB399;
-  --accent-light-5: rgb(255, 198, 179);
+  --accent-light-2: rgb(255, 187, 163);
+  --accent-light-4: rgb(255, 194, 173);
+  --accent-light-6: rgb(255, 202, 184);
+  --accent-light-8: rgb(255, 209, 194);
   --accent-light-10: rgb(255, 217, 204);
-  --accent-light-15: rgb(255, 236, 229);
-  --accent-light-20: rgb(255, 255, 255);
-  --accent-light-25: rgb(255, 255, 255);
-  --accent-dark-5: rgb(255, 160, 128);
+  --accent-dark-2: rgb(255, 171, 143);
+  --accent-dark-4: rgb(255, 164, 133);
+  --accent-dark-6: rgb(255, 156, 122);
+  --accent-dark-8: rgb(255, 149, 112);
   --accent-dark-10: rgb(255, 141, 102);
-  --accent-dark-15: rgb(255, 122, 77);
-  --accent-dark-20: rgb(255, 103, 51);
-  --accent-dark-25: rgb(255, 84, 26);
   --info: #2D9CDB;
   --success: #27AE60;
   --warning: #F2C94C;
@@ -276,10 +276,10 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  background-color: color-mix(in srgb, var(--background-light-5) 80%, transparent);
+  background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+  border: var(--border-size-md) solid var(--background-light-10);
   margin: var(--margin-md) 0;
   border-radius: var(--border-radius-xl);
-  border: var(--border-size-md) solid var(--background-light-5);
   z-index: 10;
   backdrop-filter: blur(2px);
 }
@@ -369,7 +369,7 @@
   align-items: center;
   gap: 0;
   flex-wrap: nowrap;
-  background-color: var(--background-dark-5);
+  background-color: var(--background-dark-2);
 }
 .hero .hero-content {
   width: 100%;
@@ -566,7 +566,6 @@
 }
 .about {
   background-color: var(--background);
-  min-height: 100vh;
   position: relative;
   z-index: 2;
   display: flex;
@@ -576,6 +575,7 @@
   gap: 0;
   flex-wrap: nowrap;
   gap: 6rem;
+  padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
 }
 .about .image-area {
   width: 520px;
@@ -584,7 +584,7 @@
   overflow: hidden;
   border-radius: 12px;
   flex-shrink: 0;
-  border: var(--border-size-sm) solid #989592;
+  border: var(--border-size-md) solid #989592;
   transition: var(--transition-slow);
 }
 .about .image-area img {
@@ -634,7 +634,7 @@
     align-items: center;
     gap: 0;
     flex-wrap: nowrap;
-    padding: 4rem 6vw;
+    padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
     gap: 3rem;
   }
   .about .image-area {
@@ -648,15 +648,79 @@
     align-items: center;
   }
 }
-.skills,
-.experience,
-.projects,
-.achievements,
-.contact {
-  position: relative;
-  z-index: 2;
-  background-color: white !important;
-  min-height: 100vh;
+.skills {
+  padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.skills .skills-header {
+  margin: 0;
+  margin-bottom: var(--margin-lg);
+}
+.skills .core-expertise {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--gap-md);
+}
+.skills .core-expertise .expertise-card {
+  background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+  border: var(--border-size-md) solid var(--background-light-10);
+  border-radius: var(--border-radius-xl);
+  width: 250px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition-slow);
+  padding: var(--padding-md) var(--padding-md);
+}
+.skills .core-expertise .expertise-card .icon {
+  background-color: color-mix(in srgb, var(--primary) 50%, transparent);
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--border-radius-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-lg);
+  transition: var(--transition-slow);
+}
+.skills .core-expertise .expertise-card .content {
+  margin-top: var(--margin-lg);
+}
+.skills .core-expertise .expertise-card .content h3 {
+  margin: 0;
+}
+.skills .core-expertise .expertise-card .content p {
+  margin: var(--margin-xs);
+  opacity: 0.5;
+}
+.skills .core-expertise .expertise-card:hover {
+  border-color: var(--primary);
+}
+.skills .core-expertise .expertise-card:hover .icon {
+  background-color: var(--primary);
+}
+@media (max-width: 576px) {
+  .skills .core-expertise {
+    position: relative;
+  }
+  .skills .core-expertise .expertise-card {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+    height: auto;
+  }
 }
 
 html {
@@ -689,6 +753,17 @@ textarea,
 select,
 button {
   font-family: inherit;
+}
+
+.about,
+.skills,
+.experience,
+.projects,
+.achievements,
+.contact {
+  background-color: var(--background);
+  position: relative;
+  z-index: 2;
 }
 
 /*# sourceMappingURL=styles.css.map */

@@ -19,7 +19,7 @@ $themes: (
     "papaya": ( 
         "primary": #ff7235,     
         "secondary": #FF8C42,  
-        "background": #131313,
+        "background": #101010,
         "text": #F2F2F2,         
         "accent": #FFB399   
     )
@@ -51,7 +51,7 @@ $flat-colors: (
 
     // Light shades
     @for $i from 1 through 5 {
-        $percent: $i * 5;
+        $percent: $i * 2;
         $key: shade-name($name, "light", $percent);
         $value: rgb-int(lighten($color, $percent));
         $result: map-merge($result, ($key: $value));
@@ -59,7 +59,7 @@ $flat-colors: (
 
     // Dark shades
     @for $i from 1 through 5 {
-        $percent: $i * 5;
+        $percent: $i * 2;
         $key: shade-name($name, "dark", $percent);
         $value: rgb-int(darken($color, $percent));
         $result: map-merge($result, ($key: $value));

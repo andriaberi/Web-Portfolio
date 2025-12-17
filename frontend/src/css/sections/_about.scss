@@ -1,10 +1,10 @@
 .about {
     background-color: var(--background);
-    min-height: 100vh;
     position: relative;
     z-index: 2;
     @include flex(row, center, center);
     gap: 6rem;
+    padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
 
     // Image section
     .image-area {
@@ -13,7 +13,7 @@
         overflow: hidden;
         border-radius: 12px;
         flex-shrink: 0;
-        border: var(--border-size-sm) solid #989592;
+        border: var(--border-size-md) solid #989592;
         transition: var(--transition-slow);
 
         img {
@@ -62,7 +62,7 @@
 @media (max-width: 900px) {
     .about {
         @include flex(column, center, center);
-        padding: 4rem 6vw;
+        padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
         gap: 3rem;
 
         .image-area {

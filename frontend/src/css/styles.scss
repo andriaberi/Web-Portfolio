@@ -52,3 +52,14 @@ button {
 i {
     //@include flex(row, center, center);
 }
+
+.about,
+.skills,
+.experience,
+.projects,
+.achievements,
+.contact {
+    background-color: var(--background);
+    position: relative;
+    z-index: 2;
+}

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { smoothScrollTo } from "../Helpers/smooth-scroll";
+import { smoothScrollTo } from "../helpers/smooth-scroll";
 
 function Navbar() {
     const navItems = [

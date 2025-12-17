@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import HeroTyping from "../components/hero-typing";
-import { smoothScrollTo } from "../Helpers/smooth-scroll";
+import { smoothScrollTo } from "../helpers/smooth-scroll";
 import heroImage from "../../images/hero-image.png";
 
 export default function Hero() {
