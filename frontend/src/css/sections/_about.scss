@@ -3,10 +3,8 @@
     min-height: 100vh;
     position: relative;
     z-index: 2;
-
     @include flex(row, center, center);
     gap: 6rem;
-    border-top: var(--border-size-sm) solid #989592;
 
     // Image section
     .image-area {
