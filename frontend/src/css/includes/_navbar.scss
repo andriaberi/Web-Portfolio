@@ -36,8 +36,8 @@
                 transform: translate(-50%, 0);
                 pointer-events: none;
                 font-size: var(--font-size-sm);
-                background-color: color-mix(in srgb, var(--background-light-5) 80%, transparent);
-                border: var(--border-size-md) solid var(--background-light-5);
+                background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+                border: var(--border-size-md) solid var(--background-light-10);
                 border-radius: var(--border-radius-xl);
                 padding: var(--padding-xs) var(--padding-sm);
                 opacity: 0;

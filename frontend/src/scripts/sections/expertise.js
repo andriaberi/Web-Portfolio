@@ -13,7 +13,7 @@ function ExpertiseCard({ icon, title, description }) {
 }
 
 
-export default function Skills() {
+export default function Expertise() {
     const expertiseList = [
         {
             icon: "bi-lightning-charge",
@@ -38,8 +38,8 @@ export default function Skills() {
     ];
 
     return (
-        <section className="skills" id="skills">
-            <h1 className="skills-header">Core Expertise</h1>
+        <section className="expertise" id="expertise">
+            <h1 className="expertise-header">Core Expertise</h1>
             <div className="core-expertise">
                 {expertiseList.map((expertise, index) => (
                     <ExpertiseCard

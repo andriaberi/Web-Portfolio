@@ -332,8 +332,8 @@
   transform: translate(-50%, 0);
   pointer-events: none;
   font-size: var(--font-size-sm);
-  background-color: color-mix(in srgb, var(--background-light-5) 80%, transparent);
-  border: var(--border-size-md) solid var(--background-light-5);
+  background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+  border: var(--border-size-md) solid var(--background-light-10);
   border-radius: var(--border-radius-xl);
   padding: var(--padding-xs) var(--padding-sm);
   opacity: 0;
@@ -648,7 +648,7 @@
     align-items: center;
   }
 }
-.skills {
+.expertise {
   padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
   display: flex;
   flex-direction: column;
@@ -657,18 +657,18 @@
   gap: 0;
   flex-wrap: nowrap;
 }
-.skills .skills-header {
+.expertise .expertise-header {
   margin: 0;
   margin-bottom: var(--margin-lg);
 }
-.skills .core-expertise {
+.expertise .core-expertise {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: var(--gap-md);
 }
-.skills .core-expertise .expertise-card {
+.expertise .core-expertise .expertise-card {
   background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
   border: var(--border-size-md) solid var(--background-light-10);
   border-radius: var(--border-radius-xl);
@@ -683,7 +683,7 @@
   transition: var(--transition-slow);
   padding: var(--padding-md) var(--padding-md);
 }
-.skills .core-expertise .expertise-card .icon {
+.expertise .core-expertise .expertise-card .icon {
   background-color: color-mix(in srgb, var(--primary) 50%, transparent);
   color: white;
   width: 3rem;
@@ -695,27 +695,27 @@
   font-size: var(--font-size-lg);
   transition: var(--transition-slow);
 }
-.skills .core-expertise .expertise-card .content {
+.expertise .core-expertise .expertise-card .content {
   margin-top: var(--margin-lg);
 }
-.skills .core-expertise .expertise-card .content h3 {
+.expertise .core-expertise .expertise-card .content h3 {
   margin: 0;
 }
-.skills .core-expertise .expertise-card .content p {
+.expertise .core-expertise .expertise-card .content p {
   margin: var(--margin-xs);
   opacity: 0.5;
 }
-.skills .core-expertise .expertise-card:hover {
+.expertise .core-expertise .expertise-card:hover {
   border-color: var(--primary);
 }
-.skills .core-expertise .expertise-card:hover .icon {
+.expertise .core-expertise .expertise-card:hover .icon {
   background-color: var(--primary);
 }
 @media (max-width: 576px) {
-  .skills .core-expertise {
+  .expertise .core-expertise {
     position: relative;
   }
-  .skills .core-expertise .expertise-card {
+  .expertise .core-expertise .expertise-card {
     align-items: flex-start;
     text-align: left;
     width: 100%;
@@ -756,7 +756,7 @@ button {
 }
 
 .about,
-.skills,
+.expertise,
 .experience,
 .projects,
 .achievements,

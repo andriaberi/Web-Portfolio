@@ -1,8 +1,8 @@
-.skills {
+.expertise {
     padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
     @include flex(column, center, center);
 
-    .skills-header {
+    .expertise-header {
         margin: 0;
         margin-bottom: var(--margin-lg);
     }
