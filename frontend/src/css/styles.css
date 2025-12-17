@@ -489,7 +489,7 @@
   opacity: 0.5;
   border: var(--border-size-md) solid var(--secondary);
   border-radius: var(--border-radius-xxl);
-  animation: rotate 15s linear infinite;
+  animation: rotate 20s linear infinite;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -533,7 +533,7 @@
     margin: 0 var(--margin-md);
   }
   .hero .hero-content .text-area {
-    width: 70%;
+    width: 85%;
     align-items: center;
   }
   .hero .hero-content .text-area h1 {
