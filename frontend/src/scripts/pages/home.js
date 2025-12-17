@@ -13,9 +13,9 @@ function Home() {
             <Navbar />
             <Hero />
             <About />
-            <Expertise />
             <Experience />
             <Projects />
+            <Expertise />
             <Achievements />
             <Contact />
         </>

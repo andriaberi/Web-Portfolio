@@ -5,9 +5,9 @@ function Navbar() {
     const navItems = [
         { label: "Home", icon: "bi-house" },
         { label: "About", icon: "bi-person" },
-        { label: "Expertise", icon: "bi-cpu" },
         { label: "Experience", icon: "bi-briefcase" },
         { label: "Projects", icon: "bi-rocket" },
+        { label: "Expertise", icon: "bi-cpu" },
         { label: "Achievements", icon: "bi-award" },
         { label: "Contact", icon: "bi-telephone" },
     ];
