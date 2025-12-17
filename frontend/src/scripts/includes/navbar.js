@@ -74,7 +74,7 @@ function Navbar() {
                 window.history.replaceState(null, "", `#${slugify(navItems[index].label)}`);
             },
             {
-                threshold: 0.6,
+                threshold: 0.4,
             }
         );
 
