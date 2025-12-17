@@ -436,7 +436,7 @@
 .hero .hero-content .text-area .button-container .hero-btn {
   background-color: var(--primary);
   border: var(--border-size-md) solid var(--primary);
-  height: 2rem;
+  height: 2.5rem;
   width: 15rem;
   display: flex;
   flex-direction: row;
