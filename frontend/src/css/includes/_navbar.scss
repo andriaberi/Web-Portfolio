@@ -5,6 +5,7 @@
     border-radius: var(--border-radius-xl);
     border: var(--border-size-md) solid var(--background-light-5);
     z-index: 10;
+    backdrop-filter: blur(2px);
 
     .nav-indicator {
         @include absolute(0, null, null, 0);

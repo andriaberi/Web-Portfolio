@@ -100,7 +100,7 @@
         }
 
         .image-area {
-            @include size(30vw, 30vw);
+            @include size(25vw, 25vw);
             @include flex(column, center, center);
             position: relative;
 
