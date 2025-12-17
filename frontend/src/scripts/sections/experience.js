@@ -2,11 +2,11 @@ function Experience() {
     return (
         <>
             <section className="experience"
-                 id="experience"
-                 style={{
-                     backgroundColor: "var(--background-light-20)",
-                     height: "100dvh",
-                 }}>
+                     id="experience"
+                     style={{
+                         backgroundColor: "var(--background)",
+                         height: "100dvh",
+                     }}>
             </section>
         </>
     )

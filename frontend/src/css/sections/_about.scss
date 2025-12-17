@@ -1,0 +1,11 @@
+.about,
+.skills,
+.experience,
+.projects,
+.achievements,
+.contact {
+    position: relative;
+    z-index: 2; /* above hero and home */
+    background-color: white; /* covers hero completely */
+    min-height: 100vh;
+}

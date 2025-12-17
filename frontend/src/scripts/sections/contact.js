@@ -4,7 +4,7 @@ function Contact() {
             <section className="contact"
                      id="contact"
                      style={{
-                         backgroundColor: "var(--background-light-10)",
+                         backgroundColor: "var(--background)",
                          height: "100dvh",
                      }}>
             </section>

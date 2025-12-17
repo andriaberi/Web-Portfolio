@@ -4,7 +4,7 @@ function Achievements() {
             <section className="achievements"
                      id="achievements"
                      style={{
-                         backgroundColor: "var(--background-light-5)",
+                         backgroundColor: "var(--background)",
                          height: "100dvh",
                      }}>
             </section>

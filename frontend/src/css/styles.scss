@@ -10,7 +10,9 @@
 // Includes
 @import 'includes/navbar';
 
-// Layouts
+// Sections
+@import 'sections/hero';
+@import 'sections/about';
 
 // Bases
 html {
@@ -47,5 +49,5 @@ button {
 }
 
 i {
-    @include flex(row, center, center);
+    //@include flex(row, center, center);
 }
