@@ -697,7 +697,7 @@
   background: var(--background-dark-2);
   border: var(--border-size-sm) solid grey;
   padding-bottom: 0;
-  transition: padding-bottom 1s ease-in-out;
+  transition: padding-bottom 1s ease-in-out, border var(--transition-slow);
 }
 .experience .timeline .timeline-item .timeline-card:hover {
   border-color: var(--secondary);
