@@ -40,12 +40,11 @@ function Navbar() {
         });
     }, [hoverIndex, activeIndex]);
 
-    // SCROLL → ACTIVE SECTION (LOCKED)
+    // SCROLL -> ACTIVE SECTION (LOCKED)
     useEffect(() => {
         const handleScroll = () => {
-            if (isProgrammaticScroll.current) return;
-
             const viewportCenter = window.scrollY + window.innerHeight / 2;
+
             let closestIndex = 0;
             let closestDistance = Infinity;
 
@@ -53,9 +52,9 @@ function Navbar() {
                 const section = document.getElementById(slugify(item.label));
                 if (!section) return;
 
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                const sectionCenter = sectionTop + sectionHeight / 2;
+                const rect = section.getBoundingClientRect();
+                const sectionCenter =
+                    rect.top + window.scrollY + rect.height / 2;
 
                 const distance = Math.abs(viewportCenter - sectionCenter);
                 if (distance < closestDistance) {
@@ -64,23 +63,25 @@ function Navbar() {
                 }
             });
 
-            if (closestIndex !== activeIndex) {
-                setActiveIndex(closestIndex);
-                window.history.replaceState(
-                    null,
-                    "",
-                    `#${slugify(navItems[closestIndex].label)}`
-                );
+            if (isProgrammaticScroll.current) {
+                if (closestIndex !== scrollTargetIndex.current) return;
+                isProgrammaticScroll.current = false;
+                scrollTargetIndex.current = null;
+            }
+
+            setActiveIndex(closestIndex);
+
+            const nextHash = `#${slugify(navItems[closestIndex].label)}`;
+            if (window.location.hash !== nextHash) {
+                window.location.hash = nextHash; // no const reassignment
             }
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll(); // initial check
+        handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [activeIndex]);
-
-
+    }, []);
 
     return (
         <nav className="navbar" aria-label="Primary navigation">
