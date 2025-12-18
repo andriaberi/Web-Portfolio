@@ -43,20 +43,48 @@ class Category(models.Model):
 
 class Project(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
+    slug = models.SlugField(unique=True, default="")
+    short_description = models.CharField(max_length=255, default="")
+    description = models.TextField(default="")
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='projects'
+    )
+
     thumbnail = models.ImageField(upload_to='projects/thumbnails/')
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='projects')
+    video_demo = models.URLField(blank=True, null=True)
 
-    # Technical details
-    tech_stack = models.CharField(max_length=255, help_text="Comma-separated list of technologies")
-    date_completed = models.DateField()
-    is_featured = models.BooleanField(default=False)
+    key_features = models.TextField(blank=True)
+    architecture = models.TextField(blank=True)
+    tech_stack = models.CharField(max_length=255)
 
-    # URLS
+    problem_statement = models.TextField(blank=True)
+    solution_overview = models.TextField(blank=True)
+    challenges = models.TextField(blank=True)
+    outcome = models.TextField(blank=True)
+
+    role = models.CharField(max_length=100, default="Programmer")
+    team_size = models.PositiveIntegerField(default=1)
+    project_type = models.CharField(
+        max_length=50,
+        choices=[
+            ('personal', 'Personal'),
+            ('freelance', 'Freelance'),
+            ('startup', 'Startup'),
+            ('open_source', 'Open Source'),
+            ('company', 'Company / Employment'),
+        ],
+        default='personal',
+    )
+
     live_url = models.URLField(blank=True, null=True)
     github_url = models.URLField(blank=True, null=True)
 
-    order = models.PositiveIntegerField(default=0, help_text="Used to manually order projects")
+    date_completed = models.DateField()
+    order = models.PositiveIntegerField(default=0)
+
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
@@ -64,6 +92,3 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
-
-    def get_tech_list(self):
-        return [tech.strip() for tech in self.tech_stack.split(',')]

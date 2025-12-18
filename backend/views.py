@@ -1,8 +1,6 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
-
 from django.http import JsonResponse
-from .models import Experience
+from .models import Experience, Project
+from django.shortcuts import get_object_or_404
 
 
 def experience_list(request):
@@ -27,6 +25,69 @@ def experience_list(request):
                 for tech in exp.tech_stack.split(",")
                 if tech.strip()
             ],
+        })
+
+    return JsonResponse(data, safe=False)
+
+def project_detail(request, slug):
+    project = get_object_or_404(Project, slug=slug)
+
+    data = {
+        "title": project.title,
+        "slug": project.slug,
+        "short_description": project.short_description,
+        "description": project.description,
+        "category": project.category.name if project.category else None,
+
+        "thumbnail": project.thumbnail.url if project.thumbnail else None,
+        "video_demo": project.video_demo,
+
+        "key_features": [
+            line.strip()
+            for line in project.key_features.split("\n")
+            if line.strip()
+        ],
+        "architecture": [
+            {"label": col1.strip(), "value": col2.strip()}
+            for line in (project.architecture or "").split("\n")
+            if "|" in line
+            for col1, col2 in [line.split("|", 1)]
+        ],
+        "tech_stack": [
+            tech.strip()
+            for tech in project.tech_stack.split(",")
+            if tech.strip()
+        ],
+
+        "problem_statement": project.problem_statement,
+        "solution_overview": project.solution_overview,
+        "challenges": project.challenges,
+        "outcome": project.outcome,
+
+        "role": project.role,
+        "team_size": project.team_size,
+        "project_type": project.project_type,
+
+        "live_url": project.live_url,
+        "github_url": project.github_url,
+
+        "date_completed": project.date_completed,
+        "created_at": project.created_at,
+    }
+
+    return JsonResponse(data)
+
+def project_list(request):
+    projects = Project.objects.all()
+
+    data = []
+    for project in projects:
+        data.append({
+            "title": project.title,
+            "slug": project.slug,
+            "short_description": project.short_description,
+            "thumbnail": project.thumbnail.url if project.thumbnail else None,
+            "category": project.category.name if project.category else None,
         })
 
     return JsonResponse(data, safe=False)
