@@ -210,3 +210,4 @@ __marimo__/
 .idea/
 node_modules/
 staticfiles/
+media/
