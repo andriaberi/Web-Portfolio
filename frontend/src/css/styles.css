@@ -688,6 +688,7 @@
   height: 1rem;
   border: var(--border-size-lg) solid var(--background-light-10);
   border-radius: 50%;
+  transition: 1s;
 }
 .experience .timeline .timeline-item .timeline-card {
   margin-left: 3rem;
@@ -695,7 +696,8 @@
   border-radius: 14px;
   background: var(--background-dark-2);
   border: var(--border-size-sm) solid grey;
-  transition: var(--transition-slow);
+  padding-bottom: 0;
+  transition: padding-bottom 1s ease-in-out;
 }
 .experience .timeline .timeline-item .timeline-card:hover {
   border-color: var(--secondary);
@@ -743,8 +745,9 @@
 .experience .timeline .timeline-item .timeline-card .details {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
+  transition: 0.75s ease-in-out;
   opacity: 0;
+  margin-top: 1.2rem;
 }
 .experience .timeline .timeline-item .timeline-card .details ul {
   padding-left: 1.2rem;
@@ -767,10 +770,16 @@
   border: var(--border-size-md) solid var(--background-light-10);
   border-radius: var(--border-radius-xxl);
 }
+.experience .timeline .timeline-item.active .timeline-card {
+  padding-bottom: 2rem;
+  transition: padding-bottom 0s ease-in-out;
+}
+.experience .timeline .timeline-item.active .timeline-dot {
+  border-color: var(--primary);
+}
 .experience .timeline .timeline-item.active .details {
   max-height: 1000px;
   opacity: 1;
-  margin-top: 1.2rem;
 }
 @media (max-width: 992px) {
   .experience .timeline {
