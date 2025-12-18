@@ -42,45 +42,45 @@ function Navbar() {
 
     // SCROLL → ACTIVE SECTION (LOCKED)
     useEffect(() => {
-        const sections = navItems
-            .map((item) => document.getElementById(slugify(item.label)))
-            .filter(Boolean);
+        const handleScroll = () => {
+            if (isProgrammaticScroll.current) return;
 
-        if (!sections.length) return;
+            const viewportCenter = window.scrollY + window.innerHeight / 2;
+            let closestIndex = 0;
+            let closestDistance = Infinity;
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const visible = entries
-                    .filter((e) => e.isIntersecting)
-                    .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+            navItems.forEach((item, index) => {
+                const section = document.getElementById(slugify(item.label));
+                if (!section) return;
 
-                if (!visible) return;
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                const sectionCenter = sectionTop + sectionHeight / 2;
 
-                const index = navItems.findIndex(
-                    (item) => slugify(item.label) === visible.target.id
-                );
-
-                if (index === -1) return;
-
-                if (isProgrammaticScroll.current) {
-                    if (index !== scrollTargetIndex.current) return;
-
-                    // Target reached → unlock
-                    isProgrammaticScroll.current = false;
-                    scrollTargetIndex.current = null;
+                const distance = Math.abs(viewportCenter - sectionCenter);
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = index;
                 }
+            });
 
-                setActiveIndex(index);
-                window.history.replaceState(null, "", `#${slugify(navItems[index].label)}`);
-            },
-            {
-                threshold: 0.4,
+            if (closestIndex !== activeIndex) {
+                setActiveIndex(closestIndex);
+                window.history.replaceState(
+                    null,
+                    "",
+                    `#${slugify(navItems[closestIndex].label)}`
+                );
             }
-        );
+        };
 
-        sections.forEach((section) => observer.observe(section));
-        return () => observer.disconnect();
-    }, []);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        handleScroll(); // initial check
+
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [activeIndex]);
+
+
 
     return (
         <nav className="navbar" aria-label="Primary navigation">

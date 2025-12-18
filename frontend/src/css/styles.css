@@ -575,7 +575,7 @@
   gap: 0;
   flex-wrap: nowrap;
   gap: 6rem;
-  padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+  padding: var(--padding-xxl) var(--padding-lg) var(--padding-xxl) var(--padding-lg);
 }
 .about .image-area {
   width: 520px;
@@ -634,7 +634,7 @@
     align-items: center;
     gap: 0;
     flex-wrap: nowrap;
-    padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+    padding: var(--padding-xxl) var(--padding-lg) var(--padding-xxl) var(--padding-lg);
     gap: 3rem;
   }
   .about .image-area {
@@ -648,8 +648,154 @@
     align-items: center;
   }
 }
+.experience {
+  padding: var(--padding-xxl) var(--padding-lg) var(--padding-xxl) var(--padding-lg);
+  background-color: var(--background-dark-2) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.experience .section-title {
+  margin: 0;
+  margin-bottom: var(--margin-lg);
+  letter-spacing: -0.02em;
+}
+.experience .timeline {
+  position: relative;
+  padding-left: 3rem;
+}
+.experience .timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--primary), var(--background-dark-2));
+}
+.experience .timeline .timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.experience .timeline .timeline-item .timeline-dot {
+  position: absolute;
+  left: 1px;
+  top: 22px;
+  width: 1rem;
+  height: 1rem;
+  border: var(--border-size-lg) solid var(--background-light-10);
+  border-radius: 50%;
+}
+.experience .timeline .timeline-item .timeline-card {
+  margin-left: 3rem;
+  padding: 1.6rem 2rem;
+  border-radius: 14px;
+  background: var(--background-dark-2);
+  border: var(--border-size-sm) solid grey;
+  transition: var(--transition-slow);
+}
+.experience .timeline .timeline-item .timeline-card:hover {
+  border-color: var(--secondary);
+}
+.experience .timeline .timeline-item .timeline-card .card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.experience .timeline .timeline-item .timeline-card .card-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+.experience .timeline .timeline-item .timeline-card .card-header .company {
+  display: block;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  color: var(--accent);
+}
+.experience .timeline .timeline-item .timeline-card .card-header .date {
+  font-size: var(--font-size-sm);
+  color: var(--muted);
+  white-space: nowrap;
+}
+.experience .timeline .timeline-item .timeline-card .summary {
+  margin: 1rem 0 1.2rem;
+  opacity: 0.7;
+  font-size: var(--font-size-md);
+}
+.experience .timeline .timeline-item .timeline-card .expand-btn {
+  background: none;
+  border: none;
+  background-color: var(--primary);
+  border: var(--border-size-md) solid var(--primary);
+  color: var(--text);
+  padding: var(--padding-xs) var(--padding-md);
+  cursor: pointer;
+  border-radius: 1rem;
+  transition: var(--transition-slow);
+}
+.experience .timeline .timeline-item .timeline-card .expand-btn:hover {
+  background-color: transparent;
+}
+.experience .timeline .timeline-item .timeline-card .details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+.experience .timeline .timeline-item .timeline-card .details ul {
+  padding-left: 1.2rem;
+  margin: 0 0 1rem;
+}
+.experience .timeline .timeline-item .timeline-card .details ul li {
+  margin-bottom: 0.6rem;
+  list-style: circle;
+  opacity: 0.85;
+}
+.experience .timeline .timeline-item .timeline-card .details .tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.experience .timeline .timeline-item .timeline-card .details .tech span {
+  font-size: 0.75rem;
+  padding: var(--padding-sm) var(--padding-md);
+  background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+  border: var(--border-size-md) solid var(--background-light-10);
+  border-radius: var(--border-radius-xxl);
+}
+.experience .timeline .timeline-item.active .details {
+  max-height: 1000px;
+  opacity: 1;
+  margin-top: 1.2rem;
+}
+@media (max-width: 992px) {
+  .experience .timeline {
+    padding-left: 2rem;
+  }
+  .experience .timeline-card {
+    margin-left: 2rem;
+    padding: 1.4rem;
+  }
+  .experience .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .experience .date {
+    margin-top: 0.3rem;
+  }
+}
+
+.projects {
+  background-color: var(--background-dark-2) !important;
+}
+
 .expertise {
   padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+  background-color: var(--background) !important;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -761,7 +907,6 @@ button {
 .projects,
 .achievements,
 .contact {
-  background-color: var(--background);
   position: relative;
   z-index: 2;
 }

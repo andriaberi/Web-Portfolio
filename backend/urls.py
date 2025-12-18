@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import test_api
+from .views import experience_list
 
 urlpatterns = [
-    path('test/', test_api),
+    path("experience", experience_list, name="experience-list"),
 ]

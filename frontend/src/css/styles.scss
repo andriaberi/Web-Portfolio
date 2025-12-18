@@ -13,7 +13,9 @@
 // Sections
 @import 'sections/hero';
 @import 'sections/about';
-@import 'sections/skills';
+@import 'sections/experience';
+@import 'sections/projects';
+@import 'sections/expertise';
 
 // Bases
 html {
@@ -59,7 +61,6 @@ i {
 .projects,
 .achievements,
 .contact {
-    background-color: var(--background);
     position: relative;
     z-index: 2;
 }

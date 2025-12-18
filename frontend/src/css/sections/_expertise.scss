@@ -1,5 +1,6 @@
 .expertise {
     padding: var(--padding-xxl) var(--padding-lg) var(--padding-lg) var(--padding-lg);
+    background-color: var(--background) !important;
     @include flex(column, center, center);
 
     .expertise-header {

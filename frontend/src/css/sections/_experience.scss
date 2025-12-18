@@ -1,0 +1,164 @@
+.experience {
+    padding: var(--padding-xxl) var(--padding-lg) var(--padding-xxl) var(--padding-lg);
+    background-color: var(--background-dark-2) !important;
+    @include flex(column, center, center);
+
+    .section-title {
+        margin: 0;
+        margin-bottom: var(--margin-lg);
+        letter-spacing: -0.02em;
+    }
+
+    .timeline {
+        position: relative;
+        padding-left: 3rem;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(
+                            to bottom,
+                            var(--primary),
+                            var(--background-dark-2)
+            );
+
+
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
+
+            .timeline-dot {
+                position: absolute;
+                left: 1px;
+                top: 22px;
+                @include size(1rem, 1rem);
+                border: var(--border-size-lg) solid var(--background-light-10);
+                border-radius: 50%;
+            }
+
+            .timeline-card {
+                margin-left: 3rem;
+                padding: 1.6rem 2rem;
+                border-radius: 14px;
+                background: var(--background-dark-2);
+                border: var(--border-size-sm) solid grey;
+                transition: var(--transition-slow);
+
+                &:hover {
+                    border-color: var(--secondary);
+                }
+
+                .card-header {
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 1rem;
+
+                    h3 {
+                        margin: 0;
+                        font-size: 1.3rem;
+                        font-weight: 600;
+                    }
+
+                    .company {
+                        display: block;
+                        font-size: 0.9rem;
+                        margin-top: 0.2rem;
+                        color: var(--accent);
+                    }
+
+                    .date {
+                        font-size: var(--font-size-sm);
+                        color: var(--muted);
+                        white-space: nowrap;
+                    }
+                }
+
+                .summary {
+                    margin: 1rem 0 1.2rem;
+                    opacity: 0.7;
+                    font-size: var(--font-size-md);
+                }
+
+                .expand-btn {
+                    background: none;
+                    border: none;
+                    background-color: var(--primary);
+                    border: var(--border-size-md) solid var(--primary);
+                    color: var(--text);
+                    padding: var(--padding-xs) var(--padding-md);
+                    cursor: pointer;
+                    border-radius: 1rem;
+                    transition: var(--transition-slow);
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
+
+                .details {
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.4s ease, opacity 0.3s ease;
+                    opacity: 0;
+
+                    ul {
+                        padding-left: 1.2rem;
+                        margin: 0 0 1rem;
+
+                        li {
+                            margin-bottom: 0.6rem;
+                            list-style: circle;
+                            opacity: 0.85;
+                        }
+                    }
+
+                    .tech {
+                        display: flex;
+                        flex-wrap: wrap;
+                        gap: 0.5rem;
+
+                        span {
+                            font-size: 0.75rem;
+                            padding: var(--padding-sm) var(--padding-md);
+                            background-color: color-mix(in srgb, var(--background-light-4) 80%, transparent);
+                            border: var(--border-size-md) solid var(--background-light-10);
+                            border-radius: var(--border-radius-xxl);
+                        }
+                    }
+                }
+            }
+
+            &.active .details {
+                max-height: 1000px;
+                opacity: 1;
+                margin-top: 1.2rem;
+            }
+        }
+    }
+
+    @include respond-to('lg') {
+        .timeline {
+            padding-left: 2rem;
+        }
+
+        .timeline-card {
+            margin-left: 2rem;
+            padding: 1.4rem;
+        }
+
+        .card-header {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .date {
+            margin-top: 0.3rem;
+        }
+    }
+}
