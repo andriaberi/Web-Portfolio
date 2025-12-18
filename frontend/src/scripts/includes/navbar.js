@@ -24,9 +24,7 @@ function Navbar() {
 
     const slugify = (label) => label.trim().toLowerCase().replace(/\s+/g, "-");
 
-    // --------------------
-    // NAV INDICATOR POSITION
-    // --------------------
+    // nav indicator position
     useEffect(() => {
         let index = hoverIndex ?? activeIndex;
 
@@ -48,9 +46,7 @@ function Navbar() {
         });
     }, [hoverIndex, activeIndex]);
 
-    // --------------------
-    // SCROLL SPY & URL UPDATE
-    // --------------------
+    // Scroll spy & url update
     useEffect(() => {
         const isSectionInView = (section) => {
             if (!section) return false;
@@ -79,9 +75,7 @@ function Navbar() {
                 }
             });
 
-            // --------------------
-            // PROGRAMMATIC SCROLL LOCK
-            // --------------------
+            // Programmatic scroll lock
             if (isProgrammaticScroll.current) {
                 const targetSection = document.getElementById(
                     slugify(navItems[scrollTargetIndex.current].label)
@@ -96,9 +90,7 @@ function Navbar() {
 
             setActiveIndex(closestIndex);
 
-            // --------------------
-            // UPDATE URL HASH (without jump)
-            // --------------------
+            // Update url hash (without jump)
             const nextHash = `#${slugify(navItems[closestIndex].label)}`;
             if (lastHash.current !== nextHash) {
                 window.history.replaceState(null, "", nextHash);
@@ -112,9 +104,7 @@ function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // --------------------
-    // NAV CLICK HANDLER
-    // --------------------
+    // Nav click handler
     const handleNavClick = (index) => {
         isProgrammaticScroll.current = true;
         scrollTargetIndex.current = index;
