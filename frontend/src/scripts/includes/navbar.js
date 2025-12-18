@@ -17,16 +17,24 @@ function Navbar() {
     const [indicatorStyle, setIndicatorStyle] = useState({});
 
     const navRef = useRef(null);
-
     const isProgrammaticScroll = useRef(false);
     const scrollTargetIndex = useRef(null);
+    const clickedIndexRef = useRef(null);
+    const lastHash = useRef("");
 
-    const slugify = (label) =>
-        label.trim().toLowerCase().replace(/\s+/g, "-");
+    const slugify = (label) => label.trim().toLowerCase().replace(/\s+/g, "-");
 
-    // INDICATOR POSITION (hover > active)
+    // --------------------
+    // NAV INDICATOR POSITION
+    // --------------------
     useEffect(() => {
-        const index = hoverIndex ?? activeIndex;
+        let index = hoverIndex ?? activeIndex;
+
+        // If a nav item was clicked and scroll hasn't reached it yet, show clicked index
+        if (clickedIndexRef.current !== null) {
+            index = clickedIndexRef.current;
+        }
+
         const nav = navRef.current;
         if (!nav) return;
 
@@ -40,8 +48,17 @@ function Navbar() {
         });
     }, [hoverIndex, activeIndex]);
 
-    // SCROLL -> ACTIVE SECTION (LOCKED)
+    // --------------------
+    // SCROLL SPY & URL UPDATE
+    // --------------------
     useEffect(() => {
+        const isSectionInView = (section) => {
+            if (!section) return false;
+            const rect = section.getBoundingClientRect();
+            const viewportCenter = window.innerHeight / 2;
+            return rect.top <= viewportCenter && rect.bottom >= viewportCenter;
+        };
+
         const handleScroll = () => {
             const viewportCenter = window.scrollY + window.innerHeight / 2;
 
@@ -53,8 +70,7 @@ function Navbar() {
                 if (!section) return;
 
                 const rect = section.getBoundingClientRect();
-                const sectionCenter =
-                    rect.top + window.scrollY + rect.height / 2;
+                const sectionCenter = rect.top + window.scrollY + rect.height / 2;
 
                 const distance = Math.abs(viewportCenter - sectionCenter);
                 if (distance < closestDistance) {
@@ -63,25 +79,62 @@ function Navbar() {
                 }
             });
 
+            // --------------------
+            // PROGRAMMATIC SCROLL LOCK
+            // --------------------
             if (isProgrammaticScroll.current) {
-                if (closestIndex !== scrollTargetIndex.current) return;
+                const targetSection = document.getElementById(
+                    slugify(navItems[scrollTargetIndex.current].label)
+                );
+                if (!isSectionInView(targetSection)) return; // wait until target is visible
+
+                // Target reached → unlock
                 isProgrammaticScroll.current = false;
+                clickedIndexRef.current = null;
                 scrollTargetIndex.current = null;
             }
 
             setActiveIndex(closestIndex);
 
+            // --------------------
+            // UPDATE URL HASH (without jump)
+            // --------------------
             const nextHash = `#${slugify(navItems[closestIndex].label)}`;
-            if (window.location.hash !== nextHash) {
-                window.location.hash = nextHash; // no const reassignment
+            if (lastHash.current !== nextHash) {
+                window.history.replaceState(null, "", nextHash);
+                lastHash.current = nextHash;
             }
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll();
+        handleScroll(); // initial check
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // --------------------
+    // NAV CLICK HANDLER
+    // --------------------
+    const handleNavClick = (index) => {
+        isProgrammaticScroll.current = true;
+        scrollTargetIndex.current = index;
+        clickedIndexRef.current = index; // indicator follows clicked section until scroll reaches it
+        setHoverIndex(null);
+
+        const slug = slugify(navItems[index].label);
+        const target = document.getElementById(slug);
+        if (!target) return;
+
+        // update URL immediately on click
+        window.history.replaceState(null, "", `#${slug}`);
+        lastHash.current = `#${slug}`;
+
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            target.scrollIntoView({ behavior: "smooth" });
+        } else {
+            smoothScrollTo(target.offsetTop, 1400);
+        }
+    };
 
     return (
         <nav className="navbar" aria-label="Primary navigation">
@@ -99,20 +152,7 @@ function Navbar() {
                                 }
                             }}
                             onMouseLeave={() => setHoverIndex(null)}
-                            onClick={() => {
-                                isProgrammaticScroll.current = true;
-                                scrollTargetIndex.current = index;
-                                setActiveIndex(index);
-                                setHoverIndex(null);
-
-                                const target = document.getElementById(slug);
-                                if (/Mobi|Android/i.test(navigator.userAgent)) {
-                                    document.getElementById(slug)?.scrollIntoView({ behavior: "smooth" });
-                                } else {
-                                    smoothScrollTo(target.offsetTop, 1400);
-                                }
-
-                            }}
+                            onClick={() => handleNavClick(index)}
                         >
                             <a className="nav-link">
                                 <i className={`bi ${item.icon}`} />
