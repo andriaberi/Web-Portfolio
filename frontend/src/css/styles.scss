@@ -64,3 +64,15 @@ i {
     position: relative;
     z-index: 2;
 }
+
+.reveal {
+    opacity: 0;
+    transform: scale(0.85);
+    transition: 2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}

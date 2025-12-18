@@ -697,7 +697,7 @@
   background: var(--background-dark-2);
   border: var(--border-size-sm) solid grey;
   padding-bottom: 0;
-  transition: padding-bottom 1s ease-in-out, border var(--transition-slow);
+  transition: 1s;
 }
 .experience .timeline .timeline-item .timeline-card:hover {
   border-color: var(--secondary);
@@ -798,6 +798,16 @@
   }
 }
 
+@keyframes appear {
+  0% {
+    scale: 0.8;
+    opacity: 0;
+  }
+  100% {
+    scale: 1;
+    opacity: 1;
+  }
+}
 .projects {
   background-color: var(--background-dark-2) !important;
 }
@@ -918,6 +928,18 @@ button {
 .contact {
   position: relative;
   z-index: 2;
+}
+
+.reveal {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: 2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  transition-delay: var(--delay, 0ms);
+}
+
+.reveal.is-visible {
+  opacity: 1 !important;
+  transform: scale(1) !important;
 }
 
 /*# sourceMappingURL=styles.css.map */

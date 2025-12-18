@@ -50,7 +50,7 @@
                 background: var(--background-dark-2);
                 border: var(--border-size-sm) solid grey;
                 padding-bottom: 0;
-                transition: padding-bottom 1s ease-in-out, border var(--transition-slow);
+                transition: 1s;
 
                 &:hover {
                     border-color: var(--secondary);
@@ -171,5 +171,15 @@
         .date {
             margin-top: 0.3rem;
         }
+    }
+}
+
+@keyframes appear {
+    0% {
+        scale: 0.8;
+        opacity: 0;
+    }  100% {
+        scale: 1;
+        opacity: 1;
     }
 }
