@@ -4,7 +4,7 @@
     z-index: 2;
     @include flex(row, center, center);
     gap: 6rem;
-    padding: var(--padding-xxl) var(--padding-lg) var(--padding-xxl) var(--padding-lg);
+    padding: var(--padding-xl) var(--padding-lg);
 
     // Image section
     .image-area {
