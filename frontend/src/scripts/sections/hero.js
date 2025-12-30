@@ -76,7 +76,7 @@ export default function Hero() {
                     </div>
 
                     <div
-                        className="image-area reveal"
+                        className="image-area"
                         ref={imageAreaRef}
                         onMouseMove={handleMouseMove}
                         onMouseLeave={handleMouseLeave}

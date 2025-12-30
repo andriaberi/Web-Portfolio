@@ -1,6 +1,6 @@
 function ExpertiseCard({ icon, title, description }) {
     return (
-        <div className="expertise-card reveal">
+        <div className="expertise-card">
             <div className="icon">
                 <i className={`bi ${icon}`}></i>
             </div>
