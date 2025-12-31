@@ -113,8 +113,9 @@
     aspect-ratio: 16 / 10;
     border-bottom: var(--border-size-sm) solid color-mix(in srgb, var(--text) 10%, transparent);
     background: color-mix(in srgb, var(--background) 80%, var(--text) 5%);
-    display: grid;
-    place-items: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .achievements-img {

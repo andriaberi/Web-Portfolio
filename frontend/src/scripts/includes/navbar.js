@@ -6,8 +6,8 @@ function Navbar() {
         { label: "Home", icon: "bi-house" },
         { label: "About", icon: "bi-person" },
         { label: "Experience", icon: "bi-briefcase" },
-        { label: "Projects", icon: "bi-rocket" },
         { label: "Expertise", icon: "bi-cpu" },
+        { label: "Projects", icon: "bi-rocket" },
         { label: "Achievements", icon: "bi-award" },
         { label: "Contact", icon: "bi-telephone" },
     ];

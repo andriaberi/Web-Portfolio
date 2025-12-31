@@ -14,8 +14,8 @@ function Home() {
             <Hero />
             <About />
             <Experience />
-            <Projects />
             <Expertise />
+            <Projects />
             <Achievements />
             <Contact />
         </>
