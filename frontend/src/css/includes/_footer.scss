@@ -1,0 +1,98 @@
+.footer {
+    padding: var(--padding-lg) var(--padding-lg);
+    background-color: var(--background) !important;
+    border-top: var(--border-size-md) solid color-mix(in srgb, var(--background-light-10) 70%, transparent);
+    color: var(--text);
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--gap-lg);
+    flex-wrap: wrap;
+}
+
+.footer-left {
+    display: flex;
+    align-items: baseline;
+    gap: var(--gap-md);
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.02em;
+}
+
+.footer-copy {
+    opacity: 0.65;
+    font-size: var(--font-size-sm);
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-lg);
+    flex-wrap: wrap;
+}
+
+.footer-top {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--gap-xs);
+    text-decoration: none;
+    color: var(--text);
+    opacity: 0.75;
+    transition: var(--transition-normal);
+
+    &:hover {
+        opacity: 1;
+        color: var(--primary);
+    }
+}
+
+.footer-socials {
+    display: flex;
+    gap: var(--gap-sm);
+}
+
+.footer-social {
+    @include size(44px, 44px);
+    border-radius: var(--border-radius-xl);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    color: var(--text);
+
+    background-color: color-mix(in srgb, var(--background-light-4) 70%, transparent);
+    border: var(--border-size-md) solid color-mix(in srgb, var(--background-light-10) 70%, transparent);
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-slow);
+
+    i {
+        font-size: var(--font-size-lg);
+    }
+
+    &:hover {
+        border-color: var(--primary);
+        transform: translateY(-0.12rem);
+    }
+}
+
+@include respond-to("sm") {
+    .footer {
+        padding: var(--padding-md) var(--padding-md);
+    }
+
+    .footer-container {
+        justify-content: center;
+    }
+}

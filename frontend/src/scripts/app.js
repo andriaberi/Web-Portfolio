@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './pages/home'
 import NotFound from './pages/not-found'
 import ProjectPage from './pages/project-page'
+import Footer from './includes/footer'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {

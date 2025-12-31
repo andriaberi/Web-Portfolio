@@ -9,6 +9,7 @@
 
 // Includes
 @import 'includes/navbar';
+@import 'includes/footer';
 
 // Sections
 @import 'sections/hero';
@@ -18,6 +19,7 @@
 @import 'sections/expertise';
 @import 'sections/project-page';
 @import 'sections/achievements';
+@import 'sections/contact';
 
 // Bases
 html {
@@ -62,7 +64,8 @@ i {
 .experience,
 .projects,
 .achievements,
-.contact {
+.contact,
+.footer {
     position: relative;
     z-index: 2;
 }
@@ -77,4 +80,8 @@ i {
 .reveal.is-visible {
     opacity: 1 !important;
     transform: scale(1) !important;
+}
+
+a {
+    cursor: pointer;
 }
