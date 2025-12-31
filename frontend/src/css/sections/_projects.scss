@@ -84,7 +84,7 @@
         overflow: hidden;
 
         border: var(--border-size-sm) solid color-mix(in srgb, var(--text) 10%, transparent);
-        background: color-mix(in srgb, var(--background) 90%, var(--secondary) 10%);
+        background: var(--background);
         box-shadow: var(--shadow-sm);
 
         transition:

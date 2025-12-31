@@ -2,6 +2,7 @@ import { useRef } from "react";
 import HeroTyping from "../components/hero-typing";
 import { smoothScrollTo } from "../helpers/smooth-scroll";
 import heroImage from "../../images/hero-image.png";
+import resume from '../../documents/resume.pdf';
 
 export default function Hero() {
     const imageAreaRef = useRef(null);
@@ -63,7 +64,7 @@ export default function Hero() {
                         <HeroTyping />
                         <div className="button-container">
                             <a
-                                href="documents/resume.pdf"
+                                href={resume}
                                 download="andria_beridze_resume.pdf"
                                 className="hero-btn"
                             >
