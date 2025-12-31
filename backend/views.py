@@ -1,5 +1,5 @@
 from django.http import JsonResponse
-from .models import Experience, Project
+from .models import Experience, Project, Achievement
 from django.shortcuts import get_object_or_404
 
 
@@ -88,6 +88,21 @@ def project_list(request):
             "short_description": project.short_description,
             "thumbnail": project.thumbnail.url if project.thumbnail else None,
             "category": project.category.name if project.category else None,
+        })
+
+    return JsonResponse(data, safe=False)
+
+def achievement_list(request):
+    achievements = Achievement.objects.all()
+
+    data = []
+    for a in achievements:
+        data.append({
+            "title": a.title,
+            "issuer": a.issuer,
+            "issue_date": a.issue_date,
+            "description": a.description,
+            "image": a.image.url if a.image else None,
         })
 
     return JsonResponse(data, safe=False)

@@ -1,6 +1,10 @@
 from django.contrib import admin
 from . import models
 
+admin.site.site_header = "Admin Page"
+admin.site.site_title = "Administration"
+admin.site.index_title = "Content management"
+
 class ExperienceAdmin(admin.ModelAdmin):
     list_display = (
         "title",
@@ -117,3 +121,41 @@ class ProjectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Category)
+
+@admin.register(models.Achievement)
+class AchievementAdmin(admin.ModelAdmin):
+    list_display = (
+        "title",
+        "issuer",
+        "issue_date",
+        "created_at",
+    )
+
+    list_filter = (
+        "issuer",
+        "issue_date",
+    )
+
+    search_fields = (
+        "title",
+        "issuer",
+        "description",
+    )
+
+    ordering = ("-issue_date", "-created_at")
+    readonly_fields = ("created_at",)
+
+    fieldsets = (
+        ("Basic Info", {
+            "fields": ("title", "issuer", "issue_date")
+        }),
+        ("Content", {
+            "fields": ("description",)
+        }),
+        ("Media", {
+            "fields": ("image",)
+        }),
+        ("Meta", {
+            "fields": ("created_at",)
+        }),
+    )

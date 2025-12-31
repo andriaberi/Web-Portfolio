@@ -92,3 +92,25 @@ class Project(models.Model):
 
     def __str__(self):
         return self.title
+
+class Achievement(models.Model):
+    title = models.CharField(max_length=200)
+    issuer = models.CharField(max_length=200)
+    issue_date = models.DateField()
+
+    description = models.TextField(blank=True)
+
+    image = models.ImageField(
+        upload_to="achievements/",
+        blank=True,
+        null=True,
+        help_text="Optional badge/certificate image"
+    )
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["-issue_date", "-created_at"]
+
+    def __str__(self):
+        return f"{self.title} — {self.issuer}"
