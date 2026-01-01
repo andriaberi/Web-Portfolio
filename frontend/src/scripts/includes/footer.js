@@ -1,4 +1,4 @@
-import {smoothScrollTo} from "../helpers/smooth-scroll";
+import { smoothScrollTo } from "../helpers/smooth-scroll";
 
 function Footer() {
     const year = new Date().getFullYear();
@@ -7,7 +7,10 @@ function Footer() {
         { icon: "bi-github", label: "GitHub", href: "https://github.com/andriaberi" },
         { icon: "bi-linkedin", label: "LinkedIn", href: "https://linkedin.com/in/andriaberidze/" },
         { icon: "bi-envelope", label: "Email", href: "mailto:andria24b@gmail.com" },
+        { icon: "bi-code-slash", label: "Email", href: "https://github.com/andriaberi/Web-Portfolio" },
     ];
+
+    const sourceHref = "https://github.com/andriaberi/Web-Portfolio";
 
     const scrollToTop = () => {
         const target = document.getElementById("home");
