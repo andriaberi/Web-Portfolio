@@ -13,14 +13,13 @@ function Footer() {
     const sourceHref = "https://github.com/andriaberi/Web-Portfolio";
 
     const scrollToTop = () => {
-        const target = document.getElementById("home");
-        if (!target) return;
         if (/Mobi|Android/i.test(navigator.userAgent)) {
-            target.scrollIntoView({ behavior: "smooth" });
+            window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-            smoothScrollTo(target.offsetTop, 1400);
+            smoothScrollTo(0, 1400);
         }
     };
+
 
     return (
         <footer className="footer">
