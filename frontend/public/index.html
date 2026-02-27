@@ -4,13 +4,30 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-
         <meta name="description" content="Portfolio of Andria Beridze, a Computer Science student and software developer showcasing projects, skills, and experience in web development."/>
         <meta name="author" content="Andria Beridze" />
         <meta property="og:title" content="Andria Beridze | Portfolio" />
         <meta property="og:description" content="Computer Science student & software developer. View my projects and skills."/>
 
         <title>Andria Beridze | Computer Science Student & Developer</title>
+
+        <script>
+            (function() {
+                // The current page path
+                const url = window.location.pathname;
+
+                // Send POST request to your backend API
+                fetch('/api/visitors', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url: url })
+                })
+                .then(response => response.json())
+                .catch(err => console.error('Visitor count error:', err));
+            })();
+        </script>
 
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     </head>

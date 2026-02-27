@@ -114,3 +114,13 @@ class Achievement(models.Model):
 
     def __str__(self):
         return f"{self.title} — {self.issuer}"
+
+class PageVisit(models.Model):
+    url = models.CharField(max_length=255, unique=True)
+    count = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name_plural = 'Page Visits'
+
+    def __str__(self):
+        return f"{self.url}: {self.count}"

@@ -159,3 +159,12 @@ class AchievementAdmin(admin.ModelAdmin):
             "fields": ("created_at",)
         }),
     )
+
+
+@admin.register(models.PageVisit)
+class PageVisitAdmin(admin.ModelAdmin):
+    list_display = ('url', 'count')        # Columns to show in list view
+    list_display_links = ('url',)          # Make URL clickable
+    search_fields = ('url',)               # Add search box for URLs
+    ordering = ('-count',)                 # Order by most visited first
+    list_per_page = 25

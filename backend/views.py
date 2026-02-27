@@ -1,6 +1,10 @@
 from django.http import JsonResponse
-from .models import Experience, Project, Achievement
+from django.views.decorators.csrf import csrf_exempt
+
+from .models import Experience, Project, Achievement, PageVisit
 from django.shortcuts import get_object_or_404
+import json
+
 
 
 def experience_list(request):
@@ -106,3 +110,20 @@ def achievement_list(request):
         })
 
     return JsonResponse(data, safe=False)
+
+@csrf_exempt
+def track_visit(request):
+    if request.method == 'POST':
+        data = json.loads(request.body)
+        url = data.get('url')
+        if not url:
+            return JsonResponse({'error': 'Missing URL'}, status=400)
+
+        # Get or create record for this URL
+        page, created = PageVisit.objects.get_or_create(url=url)
+        page.count += 1
+        page.save()
+
+        return JsonResponse({'count': page.count})
+
+    return JsonResponse({'error': 'Invalid method'}, status=405)
