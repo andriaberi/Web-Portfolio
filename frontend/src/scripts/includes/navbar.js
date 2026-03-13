@@ -2,19 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import { smoothScrollTo } from "../helpers/smooth-scroll";
 
 function Navbar() {
-    const navItems = [
-        { label: "Home", icon: "bi-house" },
-        { label: "About", icon: "bi-person" },
-        { label: "Experience", icon: "bi-briefcase" },
-        { label: "Expertise", icon: "bi-cpu" },
-        { label: "Projects", icon: "bi-rocket" },
-        { label: "Achievements", icon: "bi-award" },
-        { label: "Contact", icon: "bi-telephone" },
-    ];
+    const navItems = ["Home", "About", "Experience", "Expertise", "Projects", "Achievements", "Contact"];
 
     const [activeIndex, setActiveIndex] = useState(0);
-    const [hoverIndex, setHoverIndex] = useState(null);
-    const [indicatorStyle, setIndicatorStyle] = useState({});
 
     const navRef = useRef(null);
     const isProgrammaticScroll = useRef(false);
@@ -23,28 +13,6 @@ function Navbar() {
     const lastHash = useRef("");
 
     const slugify = (label) => label.trim().toLowerCase().replace(/\s+/g, "-");
-
-    // nav indicator position
-    useEffect(() => {
-        let index = hoverIndex ?? activeIndex;
-
-        // If a nav item was clicked and scroll hasn't reached it yet, show clicked index
-        if (clickedIndexRef.current !== null) {
-            index = clickedIndexRef.current;
-        }
-
-        const nav = navRef.current;
-        if (!nav) return;
-
-        const item = nav.children[index];
-        if (!item) return;
-
-        setIndicatorStyle({
-            width: item.offsetWidth + "px",
-            transform: `translateX(${item.offsetLeft}px)`,
-            transition: "var(--transition-slow)",
-        });
-    }, [hoverIndex, activeIndex]);
 
     // Scroll spy & url update
     useEffect(() => {
@@ -61,8 +29,8 @@ function Navbar() {
             let closestIndex = 0;
             let closestDistance = Infinity;
 
-            navItems.forEach((item, index) => {
-                const section = document.getElementById(slugify(item.label));
+            navItems.forEach((label, index) => {
+                const section = document.getElementById(slugify(label));
                 if (!section) return;
 
                 const rect = section.getBoundingClientRect();
@@ -75,14 +43,12 @@ function Navbar() {
                 }
             });
 
-            // Programmatic scroll lock
             if (isProgrammaticScroll.current) {
                 const targetSection = document.getElementById(
-                    slugify(navItems[scrollTargetIndex.current].label)
+                    slugify(navItems[scrollTargetIndex.current])
                 );
-                if (!isSectionInView(targetSection)) return; // wait until target is visible
+                if (!isSectionInView(targetSection)) return;
 
-                // Target reached → unlock
                 isProgrammaticScroll.current = false;
                 clickedIndexRef.current = null;
                 scrollTargetIndex.current = null;
@@ -90,8 +56,7 @@ function Navbar() {
 
             setActiveIndex(closestIndex);
 
-            // Update url hash (without jump)
-            const nextHash = `#${slugify(navItems[closestIndex].label)}`;
+            const nextHash = `#${slugify(navItems[closestIndex])}`;
             if (lastHash.current !== nextHash) {
                 window.history.replaceState(null, "", nextHash);
                 lastHash.current = nextHash;
@@ -99,23 +64,20 @@ function Navbar() {
         };
 
         window.addEventListener("scroll", handleScroll, { passive: true });
-        handleScroll(); // initial check
+        handleScroll();
 
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Nav click handler
     const handleNavClick = (index) => {
         isProgrammaticScroll.current = true;
         scrollTargetIndex.current = index;
-        clickedIndexRef.current = index; // indicator follows clicked section until scroll reaches it
-        setHoverIndex(null);
+        clickedIndexRef.current = index;
 
-        const slug = slugify(navItems[index].label);
+        const slug = slugify(navItems[index]);
         const target = document.getElementById(slug);
         if (!target) return;
 
-        // update URL immediately on click
         window.history.replaceState(null, "", `#${slug}`);
         lastHash.current = `#${slug}`;
 
@@ -124,36 +86,27 @@ function Navbar() {
         } else {
             smoothScrollTo(target.offsetTop, 1400);
         }
+
+        setActiveIndex(index);
     };
 
     return (
         <nav className="navbar" aria-label="Primary navigation">
             <ul className="nav-items" ref={navRef}>
-                {navItems.map((item, index) => {
-                    const slug = slugify(item.label);
+                {navItems.map((label, index) => {
+                    const slug = slugify(label);
 
                     return (
                         <li
                             key={slug}
-                            className="nav-item"
-                            onMouseEnter={() => {
-                                if (!isProgrammaticScroll.current) {
-                                    setHoverIndex(index);
-                                }
-                            }}
-                            onMouseLeave={() => setHoverIndex(null)}
+                            className={`nav-item${activeIndex === index ? " active" : ""}`}
                             onClick={() => handleNavClick(index)}
                         >
-                            <a className="nav-link">
-                                <i className={`bi ${item.icon}`} />
-                            </a>
-                            <span className="nav-label">{item.label}</span>
+                            <a className="nav-link">{label}</a>
                         </li>
                     );
                 })}
             </ul>
-
-            <span className="nav-indicator" style={indicatorStyle} />
         </nav>
     );
 }

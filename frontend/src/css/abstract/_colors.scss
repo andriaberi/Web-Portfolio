@@ -2,26 +2,19 @@
 
 // Base colors for each theme
 $themes: (
-    "light": (
-        "primary": #9BB6E0,
-        "secondary": #254C89,
-        "background": #caddf8,
-        "text": #030508,
-        "accent": #3B75D1
-    ),
-    "dark": (
-        "primary": #9BB6E0,
-        "secondary": #254C89,
-        "background": #030508,
-        "text": #E7EDF6,
-        "accent": #3B75D1
-    ),
-    "papaya": ( 
-        "primary": #ff7235,     
-        "secondary": #FF8C42,  
-        "background": #101010,
-        "text": #F2F2F2,         
-        "accent": #FFB399   
+    "main": (
+      "gold": #c9933a,
+      "gold-2": #e8b96a,
+      "gold-dim": rgba(201,147,58,0.1),
+      "gold-line": rgba(201,147,58,0.22),
+      "background": #080808,
+      "background-2": #0f0f0f,
+      "background-3": #141414,
+      "text": #ede7de,
+      "muted": #4e4a46,
+      "muted2": #7d756e,
+      "border": rgba(255,255,255,0.05),
+      "border2": rgba(255,255,255,0.08)
     )
 );
 
@@ -33,41 +26,6 @@ $flat-colors: (
     "danger": #EB5757
 );
 
-// Utility functions
-@function rgb-int($color) {
-    $r: round(red($color));
-    $g: round(green($color));
-    $b: round(blue($color));
-
-    @return "rgb(#{$r}, #{$g}, #{$b})";
-}
-
-@function shade-name($name, $type, $amount) {
-    @return "#{$name}-#{$type}-#{$amount}";
-}
-
-@function generate-shades($color, $name) {
-    $result: ();
-
-    // Light shades
-    @for $i from 1 through 5 {
-        $percent: $i * 2;
-        $key: shade-name($name, "light", $percent);
-        $value: rgb-int(lighten($color, $percent));
-        $result: map-merge($result, ($key: $value));
-    }
-
-    // Dark shades
-    @for $i from 1 through 5 {
-        $percent: $i * 2;
-        $key: shade-name($name, "dark", $percent);
-        $value: rgb-int(darken($color, $percent));
-        $result: map-merge($result, ($key: $value));
-    }
-
-    @return $result;
-}
-
 // Generate CSS variables per theme
 @each $theme-name, $theme-map in $themes {
     .theme-#{$theme-name} {
@@ -76,7 +34,6 @@ $flat-colors: (
         // Add shaded base colors
         @each $name, $color in $theme-map {
             $all-colors: map-merge($all-colors, ($name: $color));
-            $all-colors: map-merge($all-colors, generate-shades($color, $name));
         }
 
         // Add flat colors
