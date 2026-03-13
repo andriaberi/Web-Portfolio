@@ -115,7 +115,7 @@ python manage.py runserver  # Backend
 
 ## License
 
-All rights reserved by default — others may view the code, but they cannot legally copy, distribute, or use it in their own projects.
+This project is licensed under the MIT License. See `LICENSE`.
 
 # Contact Information
 
