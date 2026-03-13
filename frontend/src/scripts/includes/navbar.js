@@ -5,6 +5,7 @@ function Navbar() {
     const navItems = ["Home", "About", "Experience", "Expertise", "Projects", "Achievements", "Contact"];
 
     const [activeIndex, setActiveIndex] = useState(0);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     const navRef = useRef(null);
     const isProgrammaticScroll = useRef(false);
@@ -13,6 +14,10 @@ function Navbar() {
     const lastHash = useRef("");
 
     const slugify = (label) => label.trim().toLowerCase().replace(/\s+/g, "-");
+
+    const toggleMenu = () => {
+        setMenuOpen((prev) => !prev);
+    };
 
     // Scroll spy & url update
     useEffect(() => {
@@ -69,6 +74,11 @@ function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [menuOpen]);
+
     const handleNavClick = (index) => {
         isProgrammaticScroll.current = true;
         scrollTargetIndex.current = index;
@@ -88,25 +98,59 @@ function Navbar() {
         }
 
         setActiveIndex(index);
+        setMenuOpen(false); // close mobile menu on nav click
     };
 
     return (
         <nav className="navbar" aria-label="Primary navigation">
+            <span className="nav-logo">Andria <span>Beridze</span></span>
+
+            {/* Desktop nav list */}
             <ul className="nav-items" ref={navRef}>
                 {navItems.map((label, index) => {
                     const slug = slugify(label);
-
                     return (
                         <li
                             key={slug}
                             className={`nav-item${activeIndex === index ? " active" : ""}`}
                             onClick={() => handleNavClick(index)}
                         >
-                            <a className="nav-link">{label}</a>
+                            <a className="nav-link">{label.toUpperCase()}</a>
                         </li>
                     );
                 })}
             </ul>
+
+            {/* Hamburger button */}
+            <div
+                className={`nav-hamburger${menuOpen ? " open" : ""}`}
+                id="hamburger"
+                onClick={toggleMenu}
+                aria-label="Toggle mobile menu"
+                aria-expanded={menuOpen}
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            {/* Mobile menu */}
+            <div className={`mobile-menu${menuOpen ? " open" : ""}`} aria-hidden={!menuOpen}>
+                <ul className="mobile-nav-items">
+                    {navItems.map((label, index) => {
+                        const slug = slugify(label);
+                        return (
+                            <li
+                                key={slug}
+                                className={`mobile-nav-item${activeIndex === index ? " active" : ""}`}
+                                onClick={() => handleNavClick(index)}
+                            >
+                                <a className="mobile-nav-link">{label.toUpperCase()}</a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </nav>
     );
 }

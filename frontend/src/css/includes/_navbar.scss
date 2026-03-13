@@ -1,4 +1,131 @@
 .navbar {
-    background-color: green;
-    position: fixed;
+    @include fixed(0, 0, auto, 0);
+    height: 3.5rem;
+    background-color: rgb(8,8,8);
+    border-bottom: var(--border-size-sm) solid var(--border-2);
+    font-family: var(--font-family-3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--padding-lg);
+    backdrop-filter: blur(2px);
+
+    .nav-logo {
+        span {
+            color: var(--gold);
+        }
+    }
+
+    .nav-items {
+        display: flex;
+        gap: var(--gap-lg);
+
+        .nav-item {
+            font-size: 14px;
+
+            .nav-link {
+                color: var(--muted-2);
+                transition: var(--transition-fast);
+            }
+
+            &.active,
+            &:hover {
+                .nav-link {
+                    color: var(--gold);
+                }
+            }
+        }
+    }
+
+    .nav-hamburger {
+        display: none;
+        flex-direction: column;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        gap: var(--gap-sm);
+
+        span {
+            width: 60%;
+            height: 0;
+            border-bottom: 1.5px solid var(--muted);
+            transition: var(--transition-fast) ease;
+        }
+
+        &.open {
+            gap: 0;
+
+            span:nth-child(1) {
+                transform: translateY(1.5px) rotate(45deg);
+            }
+
+            span:nth-child(2) {
+                opacity: 0;
+                width: 0;
+            }
+
+            span:nth-child(3) {
+                transform: translateY(-1.5px) rotate(-45deg);
+            }
+        }
+
+        &:hover {
+            span {
+                border-color:  var(--text);
+            }
+        }
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+
+    @include respond-to('lg') {
+        padding: 0 var(--padding-md);
+
+        .nav-items {
+            display: none;
+        }
+
+        .nav-hamburger {
+            display: flex;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: calc(3.5rem + var(--border-size-sm));
+            left: 0;
+            right: 0;
+            height: calc(100dvh - 3.5rem - var(--border-size-sm));
+            background-color: rgba(8, 8, 8);
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            .mobile-nav-items {
+                display: flex;
+                flex-direction: column;
+                gap: var(--gap-lg);
+
+                .mobile-nav-item {
+                    a {
+                        transition: var(--transition-fast);
+                    }
+
+                    &.active,
+                    &:hover {
+                        a {
+                            color: var(--gold);
+                        }
+                    }
+                }
+            }
+
+            &.open {
+                display: flex;
+            }
+        }
+    }
 }
