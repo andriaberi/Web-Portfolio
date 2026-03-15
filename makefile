@@ -69,3 +69,12 @@ ifeq ($(OS),Windows_NT)
 else
 	@echo "run-backend target intended for Windows development environment."
 endif
+
+run-dev:
+ifeq ($(OS),Windows_NT)
+	npx concurrently \
+		"$(MAKE) run-frontend" \
+		"$(MAKE) run-backend"
+else
+	@echo "run-dev target intended for Windows development environment."
+endif
