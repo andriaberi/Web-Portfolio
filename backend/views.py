@@ -1,10 +1,11 @@
+import json
+import urllib.request
+
 from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Experience, Project, Achievement, PageVisit
-from django.shortcuts import get_object_or_404
-import json
-
 
 
 def experience_list(request):
@@ -32,6 +33,7 @@ def experience_list(request):
         })
 
     return JsonResponse(data, safe=False)
+
 
 def project_detail(request, slug):
     project = get_object_or_404(Project, slug=slug)
@@ -81,6 +83,7 @@ def project_detail(request, slug):
 
     return JsonResponse(data)
 
+
 def project_list(request):
     projects = Project.objects.all()
 
@@ -96,6 +99,7 @@ def project_list(request):
 
     return JsonResponse(data, safe=False)
 
+
 def achievement_list(request):
     achievements = Achievement.objects.all()
 
@@ -110,6 +114,7 @@ def achievement_list(request):
         })
 
     return JsonResponse(data, safe=False)
+
 
 @csrf_exempt
 def track_visit(request):
@@ -127,3 +132,30 @@ def track_visit(request):
         return JsonResponse({'count': page.count})
 
     return JsonResponse({'error': 'Invalid method'}, status=405)
+
+
+def codeforces_data(request):
+    username = 'andriaberi'
+
+    try:
+        urls = {
+            'info': f'https://codeforces.com/api/user.info?handles={username}',
+            'rating': f'https://codeforces.com/api/user.rating?handle={username}',
+            'status': f'https://codeforces.com/api/user.status?handle={username}',
+        }
+
+        results = {}
+        for key, url in urls.items():
+            with urllib.request.urlopen(url, timeout=10) as response:
+                results[key] = json.loads(response.read())
+
+        data = {
+            'info': results['info']['result'][0],
+            'ratingHistory': results['rating']['result'],
+            'submissions': results['status']['result'],
+        }
+
+        return JsonResponse(data, safe=False)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)

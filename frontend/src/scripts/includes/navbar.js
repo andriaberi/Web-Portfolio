@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 function Navbar({ activePage }) {
     const navItems = ["Home", "About", "Projects", "CP", "Experience", "Now"];
@@ -10,6 +10,11 @@ function Navbar({ activePage }) {
     const toggleMenu = () => {
         setMenuOpen((prev) => !prev);
     };
+
+    useEffect(() => {
+        document.body.style.overflow = menuOpen ? "hidden" : "";
+        return () => { document.body.style.overflow = ""; };
+    }, [menuOpen]);
 
     return (
         <>
