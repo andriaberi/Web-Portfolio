@@ -1,0 +1,42 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--padding-sm) var(--padding-lg);
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 12px;
+    text-align: center;
+
+    .footer-name {
+        font-family: 'DM Mono', monospace;
+          font-size: 14px;
+          color: var(--gold);
+          letter-spacing: 0.1em;
+    }
+
+    .footer-copy {
+        font-family: 'DM Mono', monospace;
+        font-size: 14px;
+        color: var(--muted);
+    }
+
+    .footer-links {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+
+        a {
+            font-family: 'DM Mono', monospace;
+            font-size: 14px;
+            color: var(--muted);
+            text-decoration: none;
+            transition: color 0.2s;
+            cursor: pointer;
+
+            &:hover {
+                color: var(--gold);
+            }
+        }
+    }
+}
