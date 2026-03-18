@@ -34,69 +34,39 @@ class Experience(models.Model):
     def __str__(self):
         return f"{self.title} @ {self.company}"
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    slug = models.SlugField(unique=True, blank=True)
-
-    class Meta:
-        verbose_name_plural = "Categories"
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.name)
-        super().save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
-
 class Project(models.Model):
-    title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True, default="")
-    short_description = models.CharField(max_length=255, default="")
-    description = models.TextField(default="")
-    category = models.ForeignKey(
-        Category,
-        on_delete=models.SET_NULL,
-        null=True,
-        related_name='projects'
-    )
+    CATEGORY_CHOICES = [
+        ("systems",  "Systems"),
+        ("ai_ml",    "AI / ML"),
+        ("web",      "Web"),
+        ("mobile",   "Mobile"),
+        ("devtools", "Dev Tools"),
+        ("other",    "Other"),
+    ]
 
-    thumbnail = models.ImageField(upload_to='projects/thumbnails/')
-    video_demo = models.URLField(blank=True, null=True)
+    title             = models.CharField(max_length=200)
+    slug              = models.SlugField(unique=True)
+    short_description = models.CharField(max_length=300)
+    description       = models.TextField()
 
-    key_features = models.TextField(blank=True)
-    architecture = models.TextField(blank=True)
-    tech_stack = models.CharField(max_length=255)
+    category    = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="other")
+    # Human-readable tag shown on the card, e.g. "Systems / ML"
+    tag_label   = models.CharField(max_length=80, blank=True)
 
-    problem_statement = models.TextField(blank=True)
-    solution_overview = models.TextField(blank=True)
-    challenges = models.TextField(blank=True)
-    outcome = models.TextField(blank=True)
+    thumbnail   = models.ImageField(upload_to="projects/thumbnails/")
+    is_featured = models.BooleanField(default=False)
+    badge_label = models.CharField(max_length=60, blank=True)
+    order       = models.PositiveIntegerField(default=0)
 
-    role = models.CharField(max_length=100, default="Programmer")
-    team_size = models.PositiveIntegerField(default=1)
-    project_type = models.CharField(
-        max_length=50,
-        choices=[
-            ('personal', 'Personal'),
-            ('freelance', 'Freelance'),
-            ('startup', 'Startup'),
-            ('open_source', 'Open Source'),
-            ('company', 'Company / Employment'),
-        ],
-        default='personal',
-    )
-
-    live_url = models.URLField(blank=True, null=True)
-    github_url = models.URLField(blank=True, null=True)
+    tech_stack  = models.CharField(max_length=255, help_text="Comma-separated")
+    github_url  = models.URLField(blank=True, null=True)
+    live_url    = models.URLField(blank=True, null=True)
 
     date_completed = models.DateField()
-    order = models.PositiveIntegerField(default=0)
-
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at     = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = ['order', '-created_at']
+        ordering = ["order", "-date_completed"]
 
     def __str__(self):
         return self.title
@@ -122,13 +92,3 @@ class Achievement(models.Model):
 
     def __str__(self):
         return f"{self.title} — {self.issuer}"
-
-class PageVisit(models.Model):
-    url = models.CharField(max_length=255, unique=True)
-    count = models.PositiveIntegerField(default=0)
-
-    class Meta:
-        verbose_name_plural = 'Page Visits'
-
-    def __str__(self):
-        return f"{self.url}: {self.count}"

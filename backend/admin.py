@@ -5,22 +5,16 @@ admin.site.site_header = "Admin Page"
 admin.site.site_title = "Administration"
 admin.site.index_title = "Content management"
 
+@admin.register(models.Experience)
 class ExperienceAdmin(admin.ModelAdmin):
-    list_display = (
-        "title",
-        "company",
-        "start_date",
-        "end_date",
-        "is_current",
-    )
-
-    list_filter = ("company", "is_current")
-    search_fields = ("title", "company", "summary", "details")
-    ordering = ("-is_current", "-start_date")
+    list_display  = ("title", "company", "location", "job_type", "start_date", "end_date", "is_current")
+    list_filter   = ("job_type", "is_current")
+    search_fields = ("title", "company", "location", "summary", "details")
+    ordering      = ("-is_current", "-start_date")
 
     fieldsets = (
         (None, {
-            "fields": ("title", "company")
+            "fields": ("title", "company", "location", "job_type")
         }),
         ("Dates", {
             "fields": ("start_date", "end_date", "is_current")
@@ -28,99 +22,40 @@ class ExperienceAdmin(admin.ModelAdmin):
         ("Content", {
             "fields": ("summary", "details", "tech_stack")
         }),
+        ("Impact", {
+            "fields": ("metrics",),
+            "description": 'JSON list of {\"value\": \"~20%\", \"label\": \"sprint productivity gain\"} objects.',
+        }),
     )
 
-admin.site.register(models.Experience, ExperienceAdmin)
 
 @admin.register(models.Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = (
-        'title',
-        'project_type',
-        'role',
-        'order',
-        'date_completed',
-        'created_at',
-    )
-
-    list_filter = (
-        'project_type',
-        'category',
-        'date_completed',
-    )
-
-    search_fields = (
-        'title',
-        'short_description',
-        'description',
-        'tech_stack',
-    )
-
-    prepopulated_fields = {
-        'slug': ('title',)
-    }
-
-    ordering = ('order', '-created_at')
-    list_editable = ('order', )
-
-    readonly_fields = ('created_at',)
+    list_display    = ("title", "category", "is_featured", "order", "date_completed", "created_at")
+    list_filter     = ("category", "is_featured", "date_completed")
+    list_editable   = ("order", "is_featured")
+    search_fields   = ("title", "short_description", "description", "tech_stack")
+    prepopulated_fields = {"slug": ("title",)}
+    ordering        = ("order", "-date_completed")
+    readonly_fields = ("created_at",)
 
     fieldsets = (
-        ('Basic Info', {
-            'fields': (
-                'title',
-                'slug',
-                'short_description',
-                'description',
-                'category',
-            )
+        ("Basic Info", {
+            "fields": ("title", "slug", "short_description", "description")
         }),
-        ('Media', {
-            'fields': (
-                'thumbnail',
-                'video_demo',
-            )
+        ("Categorisation", {
+            "fields": ("category", "tag_label")
         }),
-        ('Technical Details', {
-            'fields': (
-                'key_features',
-                'architecture',
-                'tech_stack',
-            )
+        ("Presentation", {
+            "fields": ("thumbnail", "is_featured", "badge_label", "order")
         }),
-        ('Case Study', {
-            'classes': ('collapse',),
-            'fields': (
-                'problem_statement',
-                'solution_overview',
-                'challenges',
-                'outcome',
-            )
+        ("Stack & Links", {
+            "fields": ("tech_stack", "github_url", "live_url")
         }),
-        ('Role & Context', {
-            'fields': (
-                'role',
-                'team_size',
-                'project_type',
-            )
-        }),
-        ('Links', {
-            'fields': (
-                'live_url',
-                'github_url',
-            )
-        }),
-        ('Meta & Display', {
-            'fields': (
-                'order',
-                'date_completed',
-                'created_at',
-            )
+        ("Meta", {
+            "fields": ("date_completed", "created_at")
         }),
     )
-
-
-admin.site.register(models.Category)
 
 @admin.register(models.Achievement)
 class AchievementAdmin(admin.ModelAdmin):
@@ -159,12 +94,3 @@ class AchievementAdmin(admin.ModelAdmin):
             "fields": ("created_at",)
         }),
     )
-
-
-@admin.register(models.PageVisit)
-class PageVisitAdmin(admin.ModelAdmin):
-    list_display = ('url', 'count')        # Columns to show in list view
-    list_display_links = ('url',)          # Make URL clickable
-    search_fields = ('url',)               # Add search box for URLs
-    ordering = ('-count',)                 # Order by most visited first
-    list_per_page = 25

@@ -69,68 +69,33 @@ def experience_list(request):
 
     return JsonResponse(data, safe=False)
 
-
-def project_detail(request, slug):
-    project = get_object_or_404(Project, slug=slug)
-
-    data = {
-        "title": project.title,
-        "slug": project.slug,
-        "short_description": project.short_description,
-        "description": project.description,
-        "category": project.category.name if project.category else None,
-
-        "thumbnail": project.thumbnail.url if project.thumbnail else None,
-        "video_demo": project.video_demo,
-
-        "key_features": [
-            line.strip()
-            for line in project.key_features.split("\n")
-            if line.strip()
-        ],
-        "architecture": [
-            {"label": col1.strip(), "value": col2.strip()}
-            for line in (project.architecture or "").split("\n")
-            if "|" in line
-            for col1, col2 in [line.split("|", 1)]
-        ],
-        "tech_stack": [
-            tech.strip()
-            for tech in project.tech_stack.split(",")
-            if tech.strip()
-        ],
-
-        "problem_statement": project.problem_statement,
-        "solution_overview": project.solution_overview,
-        "challenges": project.challenges,
-        "outcome": project.outcome,
-
-        "role": project.role,
-        "team_size": project.team_size,
-        "project_type": project.project_type,
-
-        "live_url": project.live_url,
-        "github_url": project.github_url,
-
-        "date_completed": project.date_completed,
-        "created_at": project.created_at,
-    }
-
-    return JsonResponse(data)
-
-
 def project_list(request):
-    projects = Project.objects.all()
+    projects = list(Project.objects.all())
 
-    data = []
-    for project in projects:
-        data.append({
-            "title": project.title,
-            "slug": project.slug,
-            "short_description": project.short_description,
-            "thumbnail": project.thumbnail.url if project.thumbnail else None,
-            "category": project.category.name if project.category else None,
-        })
+    data = [
+        {
+            "index":             str(i).zfill(2),
+            "title":             p.title,
+            "slug":              p.slug,
+            "short_description": p.short_description,
+            "description":       p.description,
+            "thumbnail":         p.thumbnail.url if p.thumbnail else None,
+            "is_featured":       p.is_featured,
+            "badge_label":       p.badge_label,
+            "category":          p.category,                  # raw key: "ai_ml"
+            "category_display":  p.get_category_display(),    # "AI / ML"
+            "tag_label":         p.tag_label,
+            "tech_stack": [
+                t.strip()
+                for t in p.tech_stack.split(",")
+                if t.strip()
+            ],
+            "github_url":        p.github_url,
+            "live_url":          p.live_url,
+            "date_completed":    p.date_completed.strftime("%b %Y"),
+        }
+        for i, p in enumerate(projects, start=1)
+    ]
 
     return JsonResponse(data, safe=False)
 
@@ -149,25 +114,6 @@ def achievement_list(request):
         })
 
     return JsonResponse(data, safe=False)
-
-
-@csrf_exempt
-def track_visit(request):
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        url = data.get('url')
-        if not url:
-            return JsonResponse({'error': 'Missing URL'}, status=400)
-
-        # Get or create record for this URL
-        page, created = PageVisit.objects.get_or_create(url=url)
-        page.count += 1
-        page.save()
-
-        return JsonResponse({'count': page.count})
-
-    return JsonResponse({'error': 'Invalid method'}, status=405)
-
 
 def codeforces_data(request):
     username = 'andriaberi'
