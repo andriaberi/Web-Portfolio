@@ -8,7 +8,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 var(--padding-lg);
-    backdrop-filter: blur(2px);
+    z-index: 200;
 
     .nav-logo {
         span {
@@ -90,7 +90,7 @@
         .mobile-menu {
             display: none;
             position: fixed;
-            top: calc(3.5rem + var(--border-size-sm));
+            top: calc(3.5rem);
             left: 0;
             right: 0;
             height: calc(100dvh - 3.5rem - var(--border-size-sm));
@@ -99,6 +99,7 @@
             justify-content: center;
             text-align: center;
             z-index: 1000;
+            border-top: var(--border-size-sm) solid var(--border-2);
 
             .mobile-nav-items {
                 display: flex;

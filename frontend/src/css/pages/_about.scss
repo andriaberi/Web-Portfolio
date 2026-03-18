@@ -1,0 +1,113 @@
+.page-about {
+    margin-top: 3.5rem;
+}
+
+.about-hero {
+    align-items: center;
+    background-color: var(--background);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 4rem;
+    justify-content: center;
+    padding: var(--padding-xl) var(--padding-lg);
+
+
+    .image-area {
+        width: 90%;
+        max-width: 450px;
+        aspect-ratio: 1 / 1;
+
+        img {
+            display: block;
+            filter: grayscale(1);
+            height: 100%;
+            object-fit: cover;
+            width: 100%;
+            transition: var(--transition-slow);
+            border: var(--border-size-sm) solid var(--gold);
+
+            &:hover {
+                filter: grayscale(0);
+            }
+        }
+    }
+
+    .text-area {
+        max-width: 650px;
+
+        .about-header {
+            margin: 0 0 1rem 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            font-family: var(--font-family-1);
+            //text-transform: uppercase;
+
+            span {
+                color: var(--gold);
+            }
+
+            @include respond-to('lg') {
+                text-align: center;
+            }
+        }
+
+        .about-body {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            gap: 0;
+            justify-content: flex-start;
+
+            p {
+                color: var(--muted-2);
+                font-size: 15px;
+                line-height: 1.5;
+                opacity: .9;
+                font-family: var(--font-family-1);
+                font-weight: 100;
+            }
+        }
+
+        .about-facts-grid {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+            column-gap: var(--gap-md);
+
+            .fact {
+                display: flex;
+                flex-direction: column;
+                gap: 3px;
+                //flex: 1;
+                flex: 1 0 auto;
+                text-align: center;
+                padding: var(--padding-sm) 0;
+
+                .fact-val {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 13px;
+                    color: var(--text);
+                }
+
+                .fact-key {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 11px;
+                    color: var(--muted);
+                    letter-spacing: 0.1em;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        @include respond-to('lg') {
+            text-align: justify;
+        }
+    }
+
+    @include respond-to('lg') {
+        flex-direction: column;
+    }
+}
