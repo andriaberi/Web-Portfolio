@@ -1,12 +1,11 @@
 .hero {
-    height: calc(100dvh - 3.5rem);
     margin-top: 3.5rem;
     display: flex;
     flex-direction: column;
     background-color: var(--background);
 
     .hero-main {
-        flex: 1;
+        height: calc(100dvh - 3.5rem - 4rem);
         display: flex;
 
         .hero-left {
@@ -71,14 +70,13 @@
                 .hero-btn {
                     padding: var(--padding-sm) 0;
                     border: var(--border-size-sm) solid var(--gold);
-                    width: 15rem;
+                    width: 13rem;
                     text-align: center;
                     transition: var(--transition-normal);
 
                     &:hover {
                         background-color: var(--gold);
                         color: var(--background);
-                        scale: 1.05;
                     }
 
                     &:first-child {
@@ -103,8 +101,8 @@
         .hb-stat {
             flex: 1;
             height: 4rem;
-            min-width: 125px;
-            padding: 0 var(--padding-lg);
+            min-width: 150px;
+            padding: 0 var(--padding-md);
             border: 1px solid var(--border);
             display: flex;
             flex-direction: column;
