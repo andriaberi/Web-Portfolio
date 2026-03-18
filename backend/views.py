@@ -1,5 +1,7 @@
 import json
 import urllib.request
+from datetime import date
+from math import ceil
 
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
@@ -8,21 +10,53 @@ from django.views.decorators.csrf import csrf_exempt
 from .models import Experience, Project, Achievement, PageVisit
 
 
+def _duration_label(start: date, end: date | None) -> str:
+    """Returns a human-readable duration string, e.g. '6 months' or '1 yr 3 mos'."""
+    end = end or date.today()
+    total_months = (end.year - start.year) * 12 + (end.month - start.month)
+    total_months = max(total_months, 1)
+    years, months = divmod(total_months, 12)
+    if years and months:
+        return f"{years} yr {months} mo{'s' if months > 1 else ''}"
+    if years:
+        return f"{years} yr{'s' if years > 1 else ''}"
+    return f"{total_months} month{'s' if total_months > 1 else ''}"
+
+
+def _duration_pct(start: date, end: date | None, max_months: int) -> int:
+    """Returns bar fill width as a 0-100 integer percentage."""
+    end = end or date.today()
+    total_months = max((end.year - start.year) * 12 + (end.month - start.month), 1)
+    return min(ceil(total_months / max_months * 100), 100)
+
+
 def experience_list(request):
-    experiences = Experience.objects.all()
+    experiences = list(Experience.objects.all())
+
+    # Longest tenure drives the 100 % bar width so bars are relative to each other
+    def month_span(exp):
+        end = exp.end_date or date.today()
+        return max((end.year - exp.start_date.year) * 12 + (end.month - exp.start_date.month), 1)
+
+    max_months = max((month_span(e) for e in experiences), default=1)
 
     data = []
-    for exp in experiences:
+    for i, exp in enumerate(experiences, start=1):
         data.append({
+            "index": str(i).zfill(2),
             "title": exp.title,
             "company": exp.company,
-            "start_date": exp.start_date,
-            "end_date": exp.end_date,
+            "location": exp.location,
+            "job_type": exp.get_job_type_display(),  # "Co-op", "Full-time", …
+            "start_date": exp.start_date.strftime("%b %Y"),
+            "end_date": exp.end_date.strftime("%b %Y") if exp.end_date else "Present",
             "is_current": exp.is_current,
+            "duration_label": _duration_label(exp.start_date, exp.end_date),
+            "duration_pct": _duration_pct(exp.start_date, exp.end_date, max_months),
             "summary": exp.summary,
             "details": [
                 line.strip()
-                for line in exp.details.split("\n")
+                for line in exp.details.splitlines()
                 if line.strip()
             ],
             "tech_stack": [
@@ -30,6 +64,7 @@ def experience_list(request):
                 for tech in exp.tech_stack.split(",")
                 if tech.strip()
             ],
+            "metrics": exp.metrics,  # already a list of {value, label} dicts
         })
 
     return JsonResponse(data, safe=False)

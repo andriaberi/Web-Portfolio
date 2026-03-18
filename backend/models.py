@@ -2,26 +2,34 @@ from django.db import models
 from django.utils.text import slugify
 
 class Experience(models.Model):
-    title = models.CharField(max_length=100)
-    company = models.CharField(max_length=100)
+    JOB_TYPE_CHOICES = [
+        ("full_time", "Full-time"),
+        ("part_time", "Part-time"),
+        ("coop",      "Co-op"),
+        ("internship","Internship"),
+        ("contract",  "Contract"),
+        ("freelance", "Freelance"),
+    ]
+
+    title      = models.CharField(max_length=100)
+    company    = models.CharField(max_length=100)
+    location   = models.CharField(max_length=100, blank=True)          # "Horsham, PA"
+    job_type   = models.CharField(max_length=20, choices=JOB_TYPE_CHOICES, default="full_time")
 
     start_date = models.DateField()
-    end_date = models.DateField(null=True, blank=True)
+    end_date   = models.DateField(null=True, blank=True)
     is_current = models.BooleanField(default=False)
 
-    summary = models.TextField(help_text="Short overview shown on the card")
+    summary    = models.TextField(help_text="Short overview shown on the card")
+    details    = models.TextField(help_text="Achievements — one per line")
+    tech_stack = models.CharField(max_length=255, help_text="Comma-separated technologies")
 
-    details = models.TextField(help_text="Detailed achievements (one per line)")
-
-    tech_stack = models.CharField(max_length=255, help_text="Comma-separated list of technologies")
+    metrics    = models.JSONField(default=list, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        ordering = [
-            "-is_current",   # current job first
-            "-start_date",   # newest → oldest
-        ]
+        ordering = ["-is_current", "-start_date"]
 
     def __str__(self):
         return f"{self.title} @ {self.company}"
