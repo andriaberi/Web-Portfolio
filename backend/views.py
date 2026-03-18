@@ -4,10 +4,8 @@ from datetime import date
 from math import ceil
 
 from django.http import JsonResponse
-from django.shortcuts import get_object_or_404
-from django.views.decorators.csrf import csrf_exempt
 
-from .models import Experience, Project, Achievement, PageVisit
+from .models import Experience, Project, Achievement
 
 
 def _duration_label(start: date, end: date | None) -> str:

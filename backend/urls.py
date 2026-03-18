@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import experience_list, project_list, achievement_list, track_visit, codeforces_data
+from .views import experience_list, project_list, achievement_list, codeforces_data
 
 urlpatterns = [
     path("experience", experience_list, name="experience-list"),
