@@ -99,17 +99,17 @@ def project_list(request):
 
 
 def achievement_list(request):
-    achievements = Achievement.objects.all()
-
-    data = []
-    for a in achievements:
-        data.append({
-            "title": a.title,
-            "issuer": a.issuer,
-            "issue_date": a.issue_date,
-            "description": a.description,
-            "image": a.image.url if a.image else None,
-        })
+    data = [
+        {
+            "title":            a.title,
+            "issuer":           a.issuer,
+            "achievement_type": a.get_achievement_type_display(),  # "Competition"
+            "year":             a.issue_date.strftime("%Y"),        # "2025"
+            "month":            a.issue_date.strftime("%b"),        # "Nov"
+            "description":      a.description,
+        }
+        for a in Achievement.objects.all()
+    ]
 
     return JsonResponse(data, safe=False)
 

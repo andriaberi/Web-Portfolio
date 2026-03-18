@@ -59,36 +59,18 @@ class ProjectAdmin(admin.ModelAdmin):
 
 @admin.register(models.Achievement)
 class AchievementAdmin(admin.ModelAdmin):
-    list_display = (
-        "title",
-        "issuer",
-        "issue_date",
-        "created_at",
-    )
-
-    list_filter = (
-        "issuer",
-        "issue_date",
-    )
-
-    search_fields = (
-        "title",
-        "issuer",
-        "description",
-    )
-
-    ordering = ("-issue_date", "-created_at")
+    list_display    = ("title", "issuer", "achievement_type", "issue_date", "created_at")
+    list_filter     = ("achievement_type", "issue_date")
+    search_fields   = ("title", "issuer", "description")
+    ordering        = ("-issue_date", "-created_at")
     readonly_fields = ("created_at",)
 
     fieldsets = (
         ("Basic Info", {
-            "fields": ("title", "issuer", "issue_date")
+            "fields": ("title", "issuer", "issue_date", "achievement_type")
         }),
         ("Content", {
             "fields": ("description",)
-        }),
-        ("Media", {
-            "fields": ("image",)
         }),
         ("Meta", {
             "fields": ("created_at",)

@@ -72,20 +72,21 @@ class Project(models.Model):
         return self.title
 
 class Achievement(models.Model):
-    title = models.CharField(max_length=200)
-    issuer = models.CharField(max_length=200)
-    issue_date = models.DateField()
+    TYPE_CHOICES = [
+        ("competition",   "Competition"),
+        ("certification", "Certification"),
+        ("award",         "Award"),
+        ("scholarship",   "Scholarship"),
+        ("honor",         "Honor"),
+        ("other",         "Other"),
+    ]
 
-    description = models.TextField(blank=True)
-
-    image = models.ImageField(
-        upload_to="achievements/",
-        blank=True,
-        null=True,
-        help_text="Optional badge/certificate image"
-    )
-
-    created_at = models.DateTimeField(auto_now_add=True)
+    title        = models.CharField(max_length=200)
+    issuer       = models.CharField(max_length=200)
+    issue_date   = models.DateField()
+    achievement_type = models.CharField(max_length=20, choices=TYPE_CHOICES, default="other")
+    description  = models.TextField(blank=True)
+    created_at   = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ["-issue_date", "-created_at"]
