@@ -392,7 +392,7 @@ footer .footer-links a:hover {
   column-gap: 4rem;
   row-gap: 0;
   justify-content: center;
-  padding: var(--padding-lg) var(--padding-lg);
+  padding: var(--padding-lg) var(--padding-xl);
 }
 .about-hero .image-area {
   width: 90%;
@@ -415,7 +415,7 @@ footer .footer-links a:hover {
   max-width: 650px;
 }
 .about-hero .text-area .about-header {
-  margin: 0 0 1rem 0;
+  margin: 1rem 0 1rem 0;
   font-size: 2.5rem;
   font-weight: 600;
   font-family: var(--font-family-1);
@@ -489,19 +489,19 @@ footer .footer-links a:hover {
 @media (max-width: 992px) {
   .about-hero {
     flex-direction: column;
+    padding: var(--padding-lg) var(--padding-lg);
   }
 }
 
 .about-body-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  border-bottom: 1px solid var(--border);
   border-top: 1px solid var(--border);
 }
 .about-body-grid .about-col {
   border-right: none;
   border-bottom: 1px solid var(--border);
-  padding: var(--padding-md) var(--padding-lg);
+  padding: var(--padding-md) var(--padding-xl);
 }
 .about-body-grid .about-col .about-col-title {
   font-family: var(--font-family-1);
@@ -510,8 +510,13 @@ footer .footer-links a:hover {
   margin-bottom: 28px;
 }
 .about-body-grid .about-col .about-col-title em {
-  font-style: italic;
   color: var(--gold);
+  font-style: italic;
+}
+@media (max-width: 992px) {
+  .about-body-grid .about-col .about-col-title {
+    text-align: center;
+  }
 }
 .about-body-grid .about-col .reading-list {
   display: flex;
@@ -577,6 +582,11 @@ footer .footer-links a:hover {
   text-transform: uppercase;
   margin-bottom: 8px;
 }
+@media (max-width: 992px) {
+  .about-body-grid .about-col .skills-grid .skill-group .skill-group-label {
+    text-align: center;
+  }
+}
 .about-body-grid .about-col .skills-grid .skill-group .skill-pills {
   display: flex;
   flex-wrap: wrap;
@@ -598,8 +608,116 @@ footer .footer-links a:hover {
   border-color: var(--gold-line);
 }
 @media (max-width: 992px) {
+  .about-body-grid .about-col .skills-grid .skill-group .skill-pills {
+    justify-content: center;
+  }
+}
+@media (max-width: 992px) {
+  .about-body-grid .about-col {
+    padding: var(--padding-md) var(--padding-lg);
+  }
+}
+@media (max-width: 992px) {
   .about-body-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+.about-expertise {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 0;
+  justify-content: center;
+  padding: var(--padding-lg) var(--padding-xl);
+  width: calc(100% - var(--padding-xl) * 2);
+}
+.about-expertise .expertise-top {
+  grid-gap: var(--gap-md);
+  align-items: start;
+  display: grid;
+  gap: var(--gap-lg);
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: var(--margin-lg);
+  width: 100%;
+}
+.about-expertise .expertise-top .expertise-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+.about-expertise .expertise-top .expertise-text .expertise-header {
+  line-height: 1.1;
+  margin: 0;
+  text-align: left;
+  font-family: var(--font-family-1);
+}
+.about-expertise .expertise-top .expertise-text .expertise-header span {
+  color: var(--gold);
+  font-style: italic;
+}
+@media (max-width: 992px) {
+  .about-expertise .expertise-top .expertise-text .expertise-header {
+    text-align: center;
+  }
+}
+.about-expertise .expertise-top .expertise-text .expertise-subtitle {
+  font-size: var(--font-size-md);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 60ch;
+  opacity: 0.75;
+  text-align: left;
+}
+.about-expertise .expertise-top .expertise-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.about-expertise .expertise-top .expertise-highlights .expertise-highlight {
+  grid-gap: var(--gap-md);
+  align-items: center;
+  background-color: var(--background-2);
+  border: var(--border-size-sm) solid var(--border);
+  display: grid;
+  gap: var(--gap-md);
+  grid-template-columns: 3rem 1fr;
+  padding: var(--padding-md);
+  transition: var(--transition-slow);
+}
+.about-expertise .expertise-top .expertise-highlights .expertise-highlight:hover {
+  border-color: var(--gold);
+}
+.about-expertise .expertise-top .expertise-highlights .expertise-highlight:hover .expertise-highlight-icon {
+  background-color: var(--gold);
+}
+.about-expertise .expertise-top .expertise-highlights .expertise-highlight .expertise-highlight-icon {
+  align-items: center;
+  background-color: var(--gold-dim);
+  color: #fff;
+  display: flex;
+  font-size: var(--font-size-lg);
+  height: 3rem;
+  justify-content: center;
+  transition: var(--transition-slow);
+  width: 3rem;
+}
+.about-expertise .expertise-top .expertise-highlights .expertise-highlight .expertise-highlight-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xs);
+}
+@media (max-width: 768px) {
+  .about-expertise .expertise-top {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 992px) {
+  .about-expertise {
+    padding: var(--padding-lg);
+    width: calc(100% - var(--padding-lg) * 2);
   }
 }
 
