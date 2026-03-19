@@ -5,7 +5,7 @@ from math import ceil
 
 from django.http import JsonResponse
 
-from .models import Experience, Project, Achievement
+from .models import Experience, Project, Achievement, Book
 
 
 def _duration_label(start: date, end: date | None) -> str:
@@ -109,6 +109,18 @@ def achievement_list(request):
             "description":      a.description,
         }
         for a in Achievement.objects.all()
+    ]
+
+    return JsonResponse(data, safe=False)
+
+def reading_list(request):
+    data = [
+        {
+            "title": b.title,
+            "author": b.author,
+            "status": b.status,
+        }
+        for b in Book.objects.all()
     ]
 
     return JsonResponse(data, safe=False)

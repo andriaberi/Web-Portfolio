@@ -76,3 +76,14 @@ class AchievementAdmin(admin.ModelAdmin):
             "fields": ("created_at",)
         }),
     )
+
+@admin.register(models.Book)
+class BookAdmin(admin.ModelAdmin):
+    fieldsets = (
+        ("Basic Info", {
+            "fields": ("title", "author")
+        }),
+        ("Content", {
+            "fields": ("status",)
+        })
+    )

@@ -93,3 +93,20 @@ class Achievement(models.Model):
 
     def __str__(self):
         return f"{self.title} — {self.issuer}"
+
+class Book(models.Model):
+    TYPE_CHOICES = [
+        ("reading", "Reading"),
+        ("done", "Done"),
+        ("up next", "Up Next"),
+    ]
+
+    title = models.CharField(max_length=200)
+    author = models.CharField(max_length=200)
+    status = models.CharField(max_length=40, choices=TYPE_CHOICES)
+
+    class Meta:
+        ordering = ["-status"]
+
+    def __str__(self):
+        return f"{self.title} - {self.author}"

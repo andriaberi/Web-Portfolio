@@ -25,3 +25,9 @@ export async function getAchievements() {
     if (!response.ok) throw new Error(`Failed to fetch achievements: ${response.status}`);
     return response.json();
 }
+
+export async function getBooks() {
+    const response = await fetch('/api/books');
+    if (!response.ok) throw new Error(`Failed to fetch books: ${response.status}`);
+    return response.json();
+}

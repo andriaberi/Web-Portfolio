@@ -8,9 +8,10 @@
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 4rem;
+    column-gap: 4rem;
+    row-gap: 0;
     justify-content: center;
-    padding: var(--padding-xl) var(--padding-lg);
+    padding: var(--padding-lg) var(--padding-lg);
 
 
     .image-area {
@@ -45,6 +46,7 @@
 
             span {
                 color: var(--gold);
+                font-style: italic;
             }
 
             @include respond-to('lg') {
@@ -81,9 +83,7 @@
                 display: flex;
                 flex-direction: column;
                 gap: 3px;
-                //flex: 1;
-                flex: 1 0 auto;
-                text-align: center;
+                width: 250px;
                 padding: var(--padding-sm) 0;
 
                 .fact-val {
@@ -99,6 +99,14 @@
                     letter-spacing: 0.1em;
                     text-transform: uppercase;
                 }
+
+                @include respond-to('lg') {
+                    text-align: center;
+                }
+            }
+
+            @include respond-to('lg') {
+                justify-content: center;
             }
         }
 
@@ -109,5 +117,134 @@
 
     @include respond-to('lg') {
         flex-direction: column;
+    }
+}
+
+.about-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+
+    .about-col {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: var(--padding-md) var(--padding-lg);
+
+        .about-col-title {
+            font-family: var(--font-family-1);
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 28px;
+
+            em {
+                font-style: italic;
+                color: var(--gold);
+            }
+        }
+
+        .reading-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            margin-bottom: var(--margin-lg);
+
+            .book-item {
+                display: flex;
+                align-items: center;
+                gap: 0;
+                border: 1px solid var(--border);
+                background: var(--background-2);
+                transition: border-color 0.2s;
+
+                .book-status {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 10px;
+                    color: var(--muted-2);
+                    padding: 12px 12px;
+                    border-right: 1px solid var(--border);
+                    min-width: 72px;
+                    text-align: center;
+                    letter-spacing: 0.06em;
+                    text-transform: uppercase;
+
+                    &.reading {
+                        color: var(--gold);
+                    }
+
+                    &.done {
+                        color: var(--green);
+                    }
+                }
+
+                .book-info {
+                    padding: 12px 14px;
+                    flex: 1;
+
+                    .book-title {
+                        font-family: var(--font-family-1);
+                        font-size: 12px;
+                        font-weight: 100;
+                    }
+
+                    .book-author {
+                        font-family: 'DM Mono', monospace;
+                        font-size: 9px;
+                        color: var(--muted);
+                        margin-top: 2px;
+                        letter-spacing: 0.06em;
+                    }
+                }
+
+                &:hover {
+                    border-color: var(--gold-line);
+                }
+            }
+        }
+
+        .skills-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: var(--margin-lg);
+
+            .skill-group {
+                .skill-group-label {
+                    font-family: 'DM Mono', monospace;
+                    font-size: 11px;
+                    color: var(--muted);
+                    letter-spacing: 0.14em;
+                    text-transform: uppercase;
+                    margin-bottom: 8px;
+                }
+
+                .skill-pills {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 4px;
+
+                    .pill {
+                        font-family: 'DM Mono', monospace;
+                        font-size: 11px;
+                        color: var(--muted-2);
+                        background: rgba(255, 255, 255, 0.04);
+                        border: 1px solid var(--border-2);
+                        padding: 4px 9px;
+                        border-radius: 1px;
+                        letter-spacing: 0.06em;
+                        cursor: pointer;
+                        transition: var(--transition-fast);
+
+                        &:hover {
+                            border-color: var(--gold-line);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @include respond-to('lg') {
+        grid-template-columns: 1fr;
     }
 }
