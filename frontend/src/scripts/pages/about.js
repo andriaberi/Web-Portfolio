@@ -109,9 +109,13 @@ function About() {
                 </div>
                 <section className="about-expertise" id="expertise">
                     <div className="expertise-top">
-                        <div className="expertise-text"><h2 className="expertise-header">Core <span>Expertise</span></h2><p
-                            className="expertise-subtitle">I focus on building production-ready features that are clean,
-                            reliable, and easy to evolve — from API design to UI polish.</p></div>
+                        <div className="expertise-text"><h2 className="expertise-header">Core <span>Expertise</span>
+                        </h2><p
+                            className="expertise-subtitle">I build production-ready features across the full stack —
+                            from backend data pipelines and event-driven systems to performant, polished UIs. I design
+                            clean APIs with explicit error handling and predictable contracts, treat performance as a
+                            requirement rather than a polish step, and invest early in maintainability so the code I
+                            ship is easier to hand off than it was to receive.</p></div>
                         <div className="expertise-highlights">
                             <div className="expertise-highlight">
                                 <div className="expertise-highlight-icon"><i className="bi bi-stack"></i></div>
@@ -139,18 +143,51 @@ function About() {
                     <div className="expertise-work">
                         <div className="expertise-principles"><h2 className="expertise-subheader">How I work</h2>
                             <ul className="expertise-list">
-                                <li className="expertise-list-item"><i className="bi bi-check2-circle"></i><span>Build for clarity first, optimize when needed</span>
+                                <li className="expertise-list-item">Build for clarity first, optimize when needed
                                 </li>
-                                <li className="expertise-list-item"><i className="bi bi-check2-circle"></i><span>Ship small, iterate fast, measure impact</span>
+                                <li className="expertise-list-item">Ship small, iterate fast, measure impact
                                 </li>
-                                <li className="expertise-list-item"><i className="bi bi-check2-circle"></i><span>Keep code readable and easy to maintain</span>
+                                <li className="expertise-list-item">Keep code readable and easy to maintain
                                 </li>
-                                <li className="expertise-list-item"><i className="bi bi-check2-circle"></i><span>Think in systems, not just features</span>
+                                <li className="expertise-list-item">Think in systems, not just features
                                 </li>
                             </ul>
-                            <div className="expertise-cta"><a className="expertise-button"><i
-                                className="bi bi-folder2-open"></i><span>View Projects</span></a><a className="expertise-link">Let’s
-                                build something <i className="bi bi-arrow-right"></i></a></div>
+                            <div className="expertise-cta">
+                                <a className="expertise-button" href="/projects"><span>View Projects</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="about-contact" id="contact">
+                    <div className="contact-container">
+                        <div className="contact-grid">
+                            <div className="contact-left"><h1 className="contact-title">Let’s have <br/><span
+                                className="contact-title-accent">a Chat</span></h1><p className="contact-subtitle">Want
+                                to talk about a project, ideas, or anything digital? Hit me up.</p><a
+                                className="contact-cta" href="mailto:andria24b@gmail.com">Let’s Chat</a></div>
+                            <div className="contact-right">
+                                <div className="contact-block">
+                                    <div className="contact-kicker">GET IN TOUCH</div>
+                                    <a className="contact-row" href="mailto:andria24b@gmail.com"><i
+                                        className="bi bi-envelope"></i><span>andria24b@gmail.com</span></a><a
+                                    className="contact-row" href="tel:+1(267)632-6754"><i
+                                    className="bi bi-telephone"></i><span>+1 (267) 632-6754</span></a></div>
+                                <div className="contact-block">
+                                    <div className="contact-kicker">FOLLOW ME</div>
+                                    <div className="contact-icons"><a className="contact-icon"
+                                                                      href="mailto:andria24b@gmail.com"
+                                                                      aria-label="Email" title="Email"><i
+                                        className="bi bi-envelope"></i></a><a className="contact-icon"
+                                                                              href="https://linkedin.com/in/andriaberidze/"
+                                                                              target="_blank" rel="noreferrer"
+                                                                              aria-label="LinkedIn" title="LinkedIn"><i
+                                        className="bi bi-linkedin"></i></a><a className="contact-icon"
+                                                                              href="https://github.com/andriaberi"
+                                                                              target="_blank" rel="noreferrer"
+                                                                              aria-label="GitHub" title="GitHub"><i
+                                        className="bi bi-github"></i></a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </section>
