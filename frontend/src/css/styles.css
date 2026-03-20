@@ -1373,7 +1373,7 @@ footer .footer-links a:hover {
   height: 9px;
   border-radius: 50%;
   border: 1px solid var(--gold-line);
-  background: var(--bg);
+  background: var(--background);
   transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
 }
 .achievements-section .timeline .ach-row .ach-content {
