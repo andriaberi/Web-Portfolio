@@ -31,3 +31,9 @@ export async function getBooks() {
     if (!response.ok) throw new Error(`Failed to fetch books: ${response.status}`);
     return response.json();
 }
+
+export async function getExperiences() {
+    const response = await fetch('/api/experience');
+    if (!response.ok) throw new Error(`Failed to fetch experience: ${response.status}`);
+    return response.json();
+}

@@ -943,6 +943,486 @@ footer .footer-links a:hover {
   }
 }
 
+.exp-page-header {
+  padding: calc(3.5rem + var(--padding-lg)) var(--padding-lg) var(--padding-lg);
+  border-bottom: 1px solid var(--border);
+}
+.exp-page-header .sec-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.exp-page-header .sec-label .sec-label-line {
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+@media (max-width: 992px) {
+  .exp-page-header .sec-label {
+    justify-content: center;
+  }
+}
+.exp-page-header .exp-page-title {
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-size: 2.5rem;
+  font-weight: 600;
+  font-family: var(--font-family-1);
+  display: flex;
+  gap: var(--gap-sm);
+}
+@media (max-width: 992px) {
+  .exp-page-header .exp-page-title {
+    justify-content: center;
+  }
+}
+.exp-page-header .exp-page-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.exp-page-header .exp-page-sub {
+  font-size: 14px;
+  color: var(--muted-2);
+  line-height: 1.7;
+  font-weight: 300;
+  margin-top: 20px;
+  max-width: 480px;
+}
+@media (max-width: 992px) {
+  .exp-page-header .exp-page-sub {
+    text-align: center;
+  }
+}
+
+.coops-timeline {
+  padding: var(--padding-md) var(--padding-lg) var(--padding-lg);
+  border-bottom: 1px solid var(--border);
+}
+.coops-timeline .coops-title {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 32px;
+  font-family: var(--font-family-1);
+}
+.coops-timeline .coops-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+@media (max-width: 992px) {
+  .coops-timeline .coops-title {
+    text-align: center;
+  }
+}
+.coops-timeline .timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.coops-timeline .timeline-grid .tl-item {
+  padding: 28px 24px;
+  border: 1px solid var(--border);
+  background: var(--background-2);
+  transition: border-color 0.2s;
+}
+.coops-timeline .timeline-grid .tl-item .tl-period {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.coops-timeline .timeline-grid .tl-item .tl-company {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+.coops-timeline .timeline-grid .tl-item .tl-role {
+  font-size: 12px;
+  color: var(--muted-2);
+  font-weight: 300;
+  margin-bottom: 12px;
+}
+.coops-timeline .timeline-grid .tl-item .tl-status {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 1px;
+  display: inline-block;
+}
+.coops-timeline .timeline-grid .tl-item .tl-status.active {
+  color: var(--gold);
+  border: 1px solid var(--gold-line);
+}
+.coops-timeline .timeline-grid .tl-item .tl-status.done {
+  color: var(--green);
+  border: 1px solid var(--green);
+}
+.coops-timeline .timeline-grid .tl-item .tl-status.upcoming {
+  color: var(--muted-2);
+  border: 1px solid var(--border-2);
+}
+.coops-timeline .timeline-grid .tl-item.upcoming {
+  border-style: dashed;
+}
+.coops-timeline .timeline-grid .tl-item:hover {
+  border-color: var(--gold);
+}
+@media (max-width: 992px) {
+  .coops-timeline .timeline-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  .coops-timeline .timeline-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.jobs-section {
+  padding: var(--padding-lg);
+  border-bottom: 1px solid var(--border);
+}
+.jobs-section .jobs-section-title {
+  font-size: 28px;
+  font-weight: 300;
+  margin-bottom: 24px;
+  font-family: var(--font-family-1);
+}
+.jobs-section .jobs-section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+@media (max-width: 992px) {
+  .jobs-section .jobs-section-title {
+    text-align: center;
+  }
+}
+.jobs-section .jobs {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.jobs-section .jobs .job {
+  background: var(--background-2);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  transition: border-color 0.25s;
+  cursor: pointer;
+}
+.jobs-section .jobs .job.open {
+  border-color: var(--gold-line);
+}
+.jobs-section .jobs .job.open .job-index {
+  color: var(--gold);
+  background: var(--gold-dim);
+  border-color: var(--gold-line);
+}
+.jobs-section .jobs .job.open .job-drawer {
+  max-height: 1000px;
+  border-color: var(--border);
+}
+.jobs-section .jobs .job .job-bar {
+  display: grid;
+  grid-template-columns: 52px 1fr auto 32px;
+  align-items: center;
+  min-height: 76px;
+}
+.jobs-section .jobs .job .job-bar .job-index {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  border-right: 1px solid var(--border);
+  font-family: "DM Mono", monospace;
+  font-size: 12px;
+  color: var(--muted);
+  transition: color 0.2s, background 0.2s;
+}
+.jobs-section .jobs .job .job-bar .job-main {
+  padding: 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.jobs-section .jobs .job .job-bar .job-main .job-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.jobs-section .jobs .job .job-bar .job-main .job-title-row .job-title {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.jobs-section .jobs .job .job-bar .job-main .job-title-row .job-status {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: var(--gold);
+  border: 1px solid var(--gold-line);
+  padding: 2px 8px;
+  border-radius: 1px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.jobs-section .jobs .job .job-bar .job-main .job-company {
+  font-size: 13px;
+  color: var(--muted-2);
+  font-weight: 300;
+}
+.jobs-section .jobs .job .job-bar .job-dates {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  min-width: 100px;
+}
+.jobs-section .jobs .job .job-bar .job-dates .job-range {
+  font-family: var(--font-family-2);
+  font-size: 11px;
+  color: var(--muted-2);
+  white-space: nowrap;
+}
+.jobs-section .jobs .job .job-bar .job-dates .job-dur-label {
+  font-family: var(--font-family-2);
+  font-size: 11px;
+  color: var(--muted);
+}
+.jobs-section .jobs .job .job-drawer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 1px solid transparent;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner {
+  display: grid;
+  grid-template-columns: 1fr 180px;
+  gap: 28px;
+  padding: 24px 72px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .bullets {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .bullets .bullet {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+  color: var(--muted-2);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .bullets .bullet::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  opacity: 0.6;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .stack-label {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .stack-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .stack-pills .pill {
+  font-family: "DM Mono", monospace;
+  font-size: 9px;
+  color: var(--muted-2);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-2);
+  padding: 4px 9px;
+  border-radius: 1px;
+  letter-spacing: 0.06em;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .metrics .metric-val {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
+  color: var(--gold);
+  line-height: 1;
+}
+.jobs-section .jobs .job .job-drawer .drawer-inner .metrics .metric-label {
+  font-size: 11px;
+  color: var(--muted);
+  font-weight: 300;
+}
+@media (max-width: 992px) {
+  .jobs-section .jobs .job .job-drawer .drawer-inner {
+    grid-template-columns: 1fr;
+    padding: 24px 32px;
+  }
+}
+
+.achievements-section {
+  padding: var(--padding-lg);
+  border-bottom: 1px solid var(--border);
+}
+.achievements-section .ach-section-title {
+  font-size: 28px;
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-family: var(--font-family-1);
+}
+@media (max-width: 992px) {
+  .achievements-section .ach-section-title {
+    justify-content: center;
+    text-align: center;
+  }
+}
+.achievements-section .ach-section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.achievements-section .timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.achievements-section .timeline::before {
+  content: "";
+  position: absolute;
+  left: 88px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold-line) 5%, var(--gold-line) 95%, transparent);
+}
+.achievements-section .timeline .ach-row {
+  display: flex;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.achievements-section .timeline .ach-row:hover {
+  background-color: var(--background-2);
+}
+.achievements-section .timeline .ach-row:hover .ach-node::before {
+  background-color: gold;
+}
+.achievements-section .timeline .ach-row:last-of-type {
+  border-bottom: none;
+}
+.achievements-section .timeline .ach-row .ach-date {
+  width: 62px;
+  flex-shrink: 0;
+  text-align: right;
+  padding-right: 26px;
+  padding-top: 2px;
+}
+.achievements-section .timeline .ach-row .ach-date .ach-year {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--gold);
+  display: block;
+  line-height: 1;
+}
+.achievements-section .timeline .ach-row .ach-date .ach-month {
+  font-family: "DM Mono", monospace;
+  font-size: 11px;
+  color: var(--muted);
+  display: block;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+.achievements-section .timeline .ach-row .ach-node {
+  width: 0;
+  flex-shrink: 0;
+  position: relative;
+}
+.achievements-section .timeline .ach-row .ach-node::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 7px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1px solid var(--gold-line);
+  background: var(--bg);
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+.achievements-section .timeline .ach-row .ach-content {
+  flex: 1;
+  padding-left: 28px;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-issuer-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-issuer-row .ach-issuer {
+  font-family: "DM Mono", monospace;
+  font-size: 10px;
+  color: var(--muted-2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-issuer-row .ach-type {
+  font-family: "DM Mono", monospace;
+  font-size: 8px;
+  color: var(--gold);
+  border: 1px solid var(--gold-line);
+  padding: 2px 7px;
+  border-radius: 1px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-name {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin-bottom: 5px;
+  line-height: 1.25;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-name .big {
+  font-size: 22px;
+}
+.achievements-section .timeline .ach-row .ach-content .ach-desc {
+  font-size: 12px;
+  color: var(--muted-2);
+  line-height: 1.65;
+  font-weight: 300;
+  max-width: 500px;
+}
+
 html {
   scroll-behavior: smooth;
   height: 100dvh;
