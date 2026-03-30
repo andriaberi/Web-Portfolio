@@ -33,7 +33,7 @@ function Experience() {
                             <div className="tl-period">Sep 2025 – Mar 2026</div>
                             <div className="tl-company">Penn Mutual</div>
                             <div className="tl-role">Software Engineer Co-op · AWS Data Pipelines</div>
-                            <span className="tl-status active">Active</span>
+                            <span className="tl-status done">Done</span>
                         </div>
                         <div className="tl-item upcoming">
                             <div className="tl-period">Sep 2026 – Mar 2027</div>

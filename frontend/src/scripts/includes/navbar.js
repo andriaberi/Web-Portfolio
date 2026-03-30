@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 
 function Navbar({ activePage }) {
-    const navItems = ["Home", "About", "Experience", "CP", "Projects", "Now"];
+    const navItems = ["Home", "About", "Experience", "Projects"];
 
     const slugify = (label) => label.trim().toLowerCase().replace(/\s+/g, "-");
 
