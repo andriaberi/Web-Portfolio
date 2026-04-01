@@ -19,7 +19,7 @@ function Experience() {
     return (
         <>
             <Navbar activePage="experience"/>
-            <div className="page active" id="page-exp">
+            <div className="page" id="page-exp">
                 <div className="exp-page-header">
                     <h1 className="exp-page-title">Work &amp;<em>Co-ops</em></h1>
                     <p className="exp-page-sub">Drexel's co-op program provides 6-month industry rotations built into the
